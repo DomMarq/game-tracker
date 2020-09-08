@@ -13,7 +13,7 @@ angular.module('app').component('home', home);
 angular.module('app').controller('HomeController', ['ExampleService', function (ExampleService) {
     this.exampleVariable = "Hello world";
 }]);
-/*--------------------- Home Component ---------------------*/
+/*--------------------- End Home Component ---------------------*/
 
 /*--------------------- Settings Component ---------------------*/
 const settings = {
@@ -30,7 +30,7 @@ function SettingsController(ExampleService) {
 }
 SettingsController.$inject = ['ExampleService'];
 angular.module('app').controller('SettingsController', SettingsController);
-/*--------------------- Settings Component ---------------------*/
+/*--------------------- End Settings Component ---------------------*/
 
 /*--------------------- Example Service ---------------------*/
 function ExampleService() {
@@ -39,5 +39,20 @@ function ExampleService() {
     // Methods
 }
 angular.module('app').service('ExampleService', ExampleService)
-/*--------------------- Example Service ---------------------*/
+/*--------------------- End Example Service ---------------------*/
 
+/*--------------------- New Room Component ---------------------*/
+const newRoom = {
+    templateUrl: './new-room/new-room.html',
+    controller: 'NewRoomController'
+}
+
+angular.module('app').component('newRoom', newRoom);
+
+function NewRoomController(ExampleService) {
+    
+}
+NewRoomController.$inject = ['ExampleService'];
+angular.module('app').controller('SettingsController', SettingsController);
+
+/*--------------------- End New Room Component ---------------------*/
