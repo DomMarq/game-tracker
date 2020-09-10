@@ -50,6 +50,10 @@ const newRoom = {
 angular.module('app').component('newRoom', newRoom);
 
 function NewRoomController(ExampleService) {
+    this.createRoom = function(room) {
+        // TODO: transform info to JSON
+        // TODO: send created JSON to backend through service
+    };
     
 }
 NewRoomController.$inject = ['ExampleService'];
