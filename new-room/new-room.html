@@ -1,7 +1,7 @@
 <div>
     <h1> Hello, world </h1>
     
-    <form novalidate class="simple-form">
+    <form class="simple-form">
         <label>Room Name: <input type="text" ng-model="room.name" /></label>
         <br />
         <label for="roomSelect">Game Type: </label>
@@ -11,13 +11,15 @@
             <option value="euchre">Euchre</option>
             <option value="golf">Golf</option>
             <option value="cah">Cards Against Humanity</option>
-            <option value="beerPong">Beer Pong</option>
+            <option value="pong">Beer Pong</option>
         </select>
         <br>
         <label>Number of Teams:<input type="number" ng-model="room.teams" placeholder="can be changed later"/></label>
         <br />
         <!-- TODO: add ability to add teammate names and such from creation page -->
         <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
-        <input type="submit" ng-click="createRoom(room)" value="Save" />
+        <button ng-click="$ctrl.createRoom(room)" value="Save" class="mdc-button--raised"><span class="mdc-button__label">Save</span></button>
+        
+        <p>{{ $ctrl.room }}</p>
     </form>
 </div>
