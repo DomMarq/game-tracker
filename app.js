@@ -37,14 +37,14 @@ function ExampleService($http) {
     // Services are Singletons
     // Properties
     // Methods
-    this.getData = getData;
+    this.getRoomData = getRoomData;
     this.postData = postData;
     
     // Get data from API
-    function getData() {
+    function getRoomData() {
         return $http({
             method: 'GET',
-            url: ''
+            url: 'data.json'
         });
     }
     
@@ -52,8 +52,8 @@ function ExampleService($http) {
     function postData(data) {
         return $http({
             method: 'PUT',
-            url: './data.json',
-            data: data,
+            url: 'data.json',
+            data: data
         })
     }
 };
@@ -73,10 +73,9 @@ angular.module('app').controller('NewRoomController', ['ExampleService', functio
     this.createRoom = createRoom;
     
     function createRoom(room) {
-        console.log('Hello, world!');
+//        ExampleService.getRoomData().then(function(response) {console.log(response.data)});
         console.log(angular.toJson(room));
         ExampleService.postData(room);
-        // TODO: send created JSON to backend through service
     };
     
 }]);

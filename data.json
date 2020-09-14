@@ -1,1 +1,12 @@
-{}
+{
+   "Game1":{
+      "name":"Game1",
+      "type":"golf",
+      "teams":4
+   },
+   "Game2":{
+      "name":"Game2",
+      "type":"euchre",
+      "teams":2
+   }
+}
