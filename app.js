@@ -10,7 +10,9 @@ const navbar = {
 angular.module('app').component('navbar', navbar);
 
 // Home Controller with dependency injection using the array method
-angular.module('app').controller('NavbarController', []);
+function NavbarController() {};
+
+angular.module('app').controller('NavbarController', NavbarController);
 /*--------------------- End Navbar Component ---------------------*/
 
 /*--------------------- Settings Component ---------------------*/
@@ -79,3 +81,41 @@ angular.module('app').controller('NewRoomController', ['ExampleService', functio
 }]);
 
 /*--------------------- End New Room Component ---------------------*/
+
+/*--------------------- Room Component ---------------------*/
+const room = {
+    templateUrl: './room/room.html',
+    controller: 'RoomController'
+};
+
+angular.module('app').component('room', room);
+
+angular.module('app').controller('RoomController', ['ExampleService', function (ExampleService) {
+    const $ctrl = this;
+    $ctrl.roomLoaded = false;
+
+    ExampleService.getRoomData().then(function(response) {
+        $ctrl.room = response.data["Game1"];
+        console.log($ctrl.room);
+        console.log($ctrl.room.name);
+        $ctrl.roomLoaded = true;
+
+    })    
+}]);
+
+/*--------------------- End Room Component ---------------------*/
+
+/*--------------------- Team Component ---------------------*/
+const team = {
+    templateUrl: './team/team.html',
+    controller: 'TeamController',
+    bindings: {team: '<'}
+};
+
+angular.module('app').component('team', team);
+
+angular.module('app').controller('TeamController', ['ExampleService', function (ExampleService) {
+    
+}]);
+
+/*--------------------- End Team Component ---------------------*/

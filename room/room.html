@@ -1,0 +1,5 @@
+<div>
+    <h1>{{ $ctrl.room.name }}: {{ $ctrl.room.type }}</h1>
+
+    <team ng-repeat="team in $ctrl.room.teams" team="team"></team>
+</div>
