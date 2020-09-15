@@ -1,19 +1,17 @@
 angular.module('app', ['ngMaterial', 'ngMessages']);
 
-/*--------------------- Home Component ---------------------*/
-const home = {
-    templateUrl: './home/home.html',
-    controller: 'HomeController'
+/*--------------------- Navbar Component ---------------------*/
+const navbar = {
+    templateUrl: './navbar/navbar.html',
+    controller: 'NavbarController'
 };
 
 // Home Component with Routing (Routed / Stateful)
-angular.module('app').component('home', home);
+angular.module('app').component('navbar', navbar);
 
 // Home Controller with dependency injection using the array method
-angular.module('app').controller('HomeController', ['ExampleService', function (ExampleService) {
-    this.exampleVariable = "Hello world";
-}]);
-/*--------------------- End Home Component ---------------------*/
+angular.module('app').controller('NavbarController', []);
+/*--------------------- End Navbar Component ---------------------*/
 
 /*--------------------- Settings Component ---------------------*/
 const settings = {
