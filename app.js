@@ -1,3 +1,4 @@
+// Dominic Marques, Connor Kuse
 angular.module('app', ['ngMaterial', 'ngMessages']);
 
 /*--------------------- Navbar Component ---------------------*/
@@ -74,6 +75,7 @@ angular.module('app').controller('NewRoomController', ['ExampleService', functio
     const $ctrl = this;
     $ctrl.createRoom = createRoom;
     
+    // Create a room object with user info and send the information to the backend
     function createRoom(room) {
         if (room == undefined) {
             $ctrl.newRoomCreationMessage = "There was an issue. Please try again.";
@@ -107,6 +109,7 @@ angular.module('app').controller('RoomController', ['ExampleService', function (
     const $ctrl = this;
     $ctrl.roomLoaded = false;
 
+    // Load room information into room
     ExampleService.getRoomData().then(function(response) {
         $ctrl.room = response.data["Game1"];
         console.log($ctrl.room);
