@@ -50,6 +50,7 @@ function ExampleService($http) {
     
     // send data to backend
     function postData(data) {
+        console.log("Data: " + data);
         return $http({
             method: 'PUT',
             url: 'data.json',
@@ -64,18 +65,30 @@ angular.module('app').service('ExampleService', ExampleService);
 /*--------------------- New Room Component ---------------------*/
 const newRoom = {
     templateUrl: './new-room/new-room.html',
-    controller: 'NewRoomController'
+    controller: 'NewRoomController',
 };
 
 angular.module('app').component('newRoom', newRoom);
 
 angular.module('app').controller('NewRoomController', ['ExampleService', function (ExampleService) {
-    this.createRoom = createRoom;
+    const $ctrl = this;
+    $ctrl.createRoom = createRoom;
     
     function createRoom(room) {
-//        ExampleService.getRoomData().then(function(response) {console.log(response.data)});
-        console.log(angular.toJson(room));
-        ExampleService.postData(room);
+        if (room == undefined) {
+            $ctrl.newRoomCreationMessage = "There was an issue. Please try again.";
+            $ctrl.newRoomFormSubmission = true;
+        } else if (!room.name || !room.type || !room.teams) {
+            $ctrl.newRoomCreationMessage = "There was an issue. Please try again.";
+            $ctrl.newRoomFormSubmission = true;
+        } else {
+            var roomJson = angular.toJson(room);
+            console.log(roomJson);
+            ExampleService.postData(roomJson).then(function() {
+                $ctrl.newRoomCreationMessage = "Room created successfully!";
+                $ctrl.newRoomFormSubmission = true;
+            })
+        }
     };
     
 }]);
@@ -109,13 +122,12 @@ angular.module('app').controller('RoomController', ['ExampleService', function (
 const team = {
     templateUrl: './team/team.html',
     controller: 'TeamController',
-    bindings: {team: '<'}
+    bindings: {
+        team: '<'
+    }
 };
 
 angular.module('app').component('team', team);
-
-angular.module('app').controller('TeamController', ['ExampleService', function (ExampleService) {
-    
-}]);
+angular.module('app').controller('TeamController', ['ExampleService', function (ExampleService) {}]);
 
 /*--------------------- End Team Component ---------------------*/
