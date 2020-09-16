@@ -65,7 +65,7 @@ angular.module('app').service('ExampleService', ExampleService);
 /*--------------------- New Room Component ---------------------*/
 const newRoom = {
     templateUrl: './new-room/new-room.html',
-    controller: 'NewRoomController',
+    controller: 'NewRoomController'
 };
 
 angular.module('app').component('newRoom', newRoom);
@@ -106,7 +106,16 @@ angular.module('app').component('room', room);
 angular.module('app').controller('RoomController', ['ExampleService', function (ExampleService) {
     const $ctrl = this;
     $ctrl.roomLoaded = false;
-
+    $ctrl.room = {
+        name: "",
+        type: "",
+        teams: {}
+    }
+    
+    $ctrl.updateRoomName = function(event) {
+        $ctrl.room = event.room;
+    }
+    
     ExampleService.getRoomData().then(function(response) {
         $ctrl.room = response.data["Game1"];
         console.log($ctrl.room);
@@ -131,3 +140,31 @@ angular.module('app').component('team', team);
 angular.module('app').controller('TeamController', ['ExampleService', function (ExampleService) {}]);
 
 /*--------------------- End Team Component ---------------------*/
+
+/*--------------------- Room Name Change Component ---------------------*/
+const rnchange = {
+    templateUrl: './rnchange/rnchange.html',
+    controller: 'RoomNameChangeController',
+    bindings: {
+        room: '<',
+        onUpdate: '&'
+    }
+};
+
+angular.module('app').component('rnchange', rnchange);
+angular.module('app').controller('RoomNameChangeController', function() {
+    this.$onChanges = function(changes) { // received when parent (room) changes data
+        if (changes.room) {
+            this.room = angular.copy(this.room); // breaks pass by reference
+        }  
+    };
+    this.updateRoomName = function() { // called when submit button is pressed
+        this.onUpdate({ // outgoing bound event
+            $event: {
+                room: this.room // value to pass back
+            }
+        });
+    }
+});
+
+/*--------------------- End Room Name Change Component ---------------------*/

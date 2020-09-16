@@ -1,5 +1,8 @@
 <div>
     <h1>Room Name: {{ $ctrl.room.name }}</h1>
+    <rnchange
+        room="$ctrl.room" on-update="$ctrl.updateRoomName($event);">
+    </rnchange>
     <h1>Game Type: {{ $ctrl.room.type }}</h1>
     <h1>Teams (w/ Wins and Losses):</h1>
 
