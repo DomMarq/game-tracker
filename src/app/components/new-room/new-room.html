@@ -1,0 +1,25 @@
+<div>
+    <h1> Create a New Room </h1>
+    
+    <form class="simple-form">
+        <label>Room Name: <input type="text" ng-model="room.name" required/></label>
+        <br />
+        <label for="roomSelect">Game Type: </label>
+        <select name="roomSelect" id="roomSelect" ng-model="room.type" required>
+            <option value="">Select Game Type:</option>
+            <option value="dye">Beer Dye</option>
+            <option value="euchre">Euchre</option>
+            <option value="golf">Golf</option>
+            <option value="cah">Cards Against Humanity</option>
+            <option value="pong">Beer Pong</option>
+        </select>
+        <br>
+        <label>Number of Teams: <input type="number" ng-model="room.teams" placeholder="can be changed later" required/></label>
+        <br />
+        <!-- TODO: add ability to add teammate names and such from creation page -->
+        <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
+        <button ng-click="$ctrl.createRoom(room);" value="Save" class="mdc-button--raised"><span class="mdc-button__label">Save</span></button>
+        
+        <p ng-if=$ctrl.newRoomFormSubmission>{{ $ctrl.newRoomCreationMessage }}</p>
+    </form>
+</div>
