@@ -14,13 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/DomMarq/game-tracker.git"
   },
-  "author": "Michael Wicks",
+  "author": "Dominic Marques, Connor Kuse",
   "license": "UNLICENSED",
-  "private": "true",
+  "private": "false",
   "bugs": {
-    "url": "https://github.com/michaelwicks/proto-stack-starter-angularjs/issues"
+    "url": "https://github.com/DomMarq/game-tracker/issues"
   },
-  "homepage": "https://github.com/michaelwicks/proto-stack-starter-angularjs#readme",
+  "homepage": "https://github.com/DomMarq/game-tracker#readme",
   "dependencies": {
     "@fintechstudios/angularjs-mdc": "^0.5.2",
     "@material/card": "^0.38.0",
