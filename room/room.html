@@ -1,0 +1,12 @@
+<!--Dominic Marques, Connor Kuse-->
+<!--View the information about a room - games, team records, etc.-->
+<div>
+    <h1>Room Name: {{ $ctrl.room.name }}</h1>
+    <rnchange
+        room="$ctrl.room" on-update="$ctrl.updateRoomName($event);">
+    </rnchange>
+    <h1>Game Type: {{ $ctrl.room.type }}</h1>
+    <h1>Teams (w/ Wins and Losses):</h1>
+
+    <team ng-repeat="team in $ctrl.room.teams" team="team"></team>
+</div>
