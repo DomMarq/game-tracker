@@ -1,7 +1,6 @@
-var root = {
-  templateUrl: './root.html'
-};
-
 angular
-  .module('root')
-  .component('root', root);
+  .module('root', [
+    'common',
+    'components',
+    'templates'
+  ]);
