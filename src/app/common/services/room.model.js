@@ -3,7 +3,7 @@ class RoomModel {
         this.Parse = Parse;
         this.name = "Room";
         this.fields = [
-            'name'
+            'name',
             'gameType',
             'teams',
             'users',
@@ -56,5 +56,7 @@ class RoomModel {
             .catch(error => Promise.reject(error))
     }
 
-    getByUser()
+    getByUser(user) {
+        return user;
+    }
 }
