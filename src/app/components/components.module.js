@@ -1,5 +1,9 @@
 angular
     .module('components', [
-        'ui.router',
+        'components.navbar',
+        'components.navbar',
+        'components.team',
+        'components.rnchange',
+        'components.new-room',
         'components.home'
     ]);
