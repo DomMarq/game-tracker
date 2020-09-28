@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "gulp production && node ./backend/index.js",
+    "start": "gulp production",
     "dev": "PORT=1337 node ./backend/index.js",
     "test": "./node_modules/.bin/cypress run",
     "deploy": "gulp production",
