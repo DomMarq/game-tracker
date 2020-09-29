@@ -1,8 +1,7 @@
 var root = {
-  templateUrl: './root.html'
+    templateUrl: './root.html'
 };
 
 angular
-  .module('root')
-  .component('root', root)
-  ;
+    .module('root')
+    .component('root', root);
