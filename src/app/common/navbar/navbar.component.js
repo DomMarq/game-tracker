@@ -4,4 +4,4 @@ const navbar = {
 };
 
 // navbar Component with Routing (Routed / Stateful)
-angular.module('components.navbar').component('navbar', navbar);
+angular.module('common').component('navbar', navbar);
