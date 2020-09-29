@@ -1,7 +1,7 @@
-function RoomController(ExampleService) {
-    // ...
-}
+const room = {
+    templateUrl: './room.html',
+    controller: 'RoomController'
+};
 
-angular
-    .module('room')
-    .controller('RoomController', RoomController);
+// Home Component with Routing (Routed / Stateful)
+angular.module('components.room').component('room', room);
