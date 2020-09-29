@@ -1,6 +1,6 @@
 const navbar = {
     templateUrl: './navbar.html',
-    controller: 'navbarController'
+    controller: 'NavbarController'
 };
 
 // navbar Component with Routing (Routed / Stateful)

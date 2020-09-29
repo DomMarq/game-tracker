@@ -23,4 +23,4 @@ function RoomController() {
 
 // TODO: Add the room info request service
 RoomController.$inject = ['ExampleService'];
-angular.module('app').controller('RoomController', RoomController);
+angular.module('components.room').controller('RoomController', RoomController);
