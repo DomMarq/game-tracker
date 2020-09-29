@@ -5,7 +5,6 @@ class RoomModel {
         this.fields = [
             'name',
             'gameType',
-            'teams',
             'users',
             'manager'
         ];
