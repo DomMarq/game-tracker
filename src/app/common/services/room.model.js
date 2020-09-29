@@ -7,11 +7,10 @@ class RoomModel {
             'gameType',
             'teams',
             'users',
-            'manager',
-            'rounds'
+            'manager'
         ];
-        this.data = {};  // hold singular result of queries
-        this.collection = [];  // hold array results of queries
+        this.data = {}; // hold singular result of queries
+        this.collection = []; // hold array results of queries
     }
 
     New(obj) {
@@ -20,25 +19,25 @@ class RoomModel {
             const parseObject = new this.Parse.Object(this.name);
             this.Parse.defineAttributes(parseObject, this.fields);
             return parseObject;
-        } else {  // Exposing Room Parse Object Attributes (getters and setters)
+        } else { // Exposing Room Parse Object Attributes (getters and setters)
             this.Parse.defineAttributes(obj, this.fields);
             return obj;
         }
     }
 
-    getTeamById(id) {
+    getById(id) {
         return new this.Parse.Query(this.New())
-            .include('teams')
             .get(id)
             .then(result => {
                 this.Parse.defineAttributes(result, this.fields);
-                // get the pointer
-                this.Parse.defineAttributes(result.teams, this.TeamModel.fields);
+                this.data = result;
                 return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
     }
 
+    /* NOTE: currently not functional or really useful at all until users are
+       implemented */
     getByManager(manager) {
         // get rooms by manager
         return new this.Parse.Query(this.New())
@@ -48,15 +47,35 @@ class RoomModel {
             .find()
             .then(results => {
                 results.forEach(result => {
-                    this.Parse.defineAttributes(result, this.fields);
-                    this.Parse.defineAttributes(result.manager, this.UserModel.fields);
+                    this.Parse.defineAttributes(result, this
+                        .fields);
+                    this.Parse.defineAttributes(result.manager,
+                        this.UserModel.fields);
+                });
+                this.collection = results;
+                return Promise.resolve(results);
+            })
+            .catch(error => Promise.reject(error));
+    }
+
+    /* NOTE: currently not functional or really useful at all until users are
+       implemented */
+    getByUser(user) {
+        // get rooms by user
+        return new this.Parse.Query(this.New())
+            .include('user')
+            .equalTo('user', user)
+            .descending('createdAt')
+            .find()
+            .then(results => {
+                results.forEach(result => {
+                    this.Parse.defineAttributes(result, this
+                        .fields);
+                    this.Parse.defineAttributes(result.user,
+                        this.UserModel.fields);
                 })
                 return Promise.resolve(results);
             })
-            .catch(error => Promise.reject(error))
-    }
-
-    getByUser(user) {
-        return user;
+            .catch(error => Promise.reject(error));
     }
 }

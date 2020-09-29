@@ -5,3 +5,5 @@
 - [x] fix root.module.js?
 - [ ] do the data models for each class
     - [ ] compare with examples
+- [ ] function documentation? Jsdocs possibly?
+- [ ] implement users
