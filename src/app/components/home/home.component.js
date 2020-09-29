@@ -6,7 +6,7 @@ const home = {
 // Home Component with Routing (Routed / Stateful)
 angular.module('components.home')
     .component('home', home)
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider) {
         $stateProvider.state('home', {
             parent: 'app',
             url: '/',
