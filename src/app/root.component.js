@@ -4,4 +4,5 @@ var root = {
 
 angular
   .module('root')
-  .component('root', root);
+  .component('root', root)
+  ;
