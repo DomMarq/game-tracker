@@ -1,4 +1,6 @@
 angular
     .module('components', [
-        'components.home'
+        'components.home',
+        // 'components.room'
+        'components.navbar',
     ]);
