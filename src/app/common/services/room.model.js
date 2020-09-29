@@ -26,7 +26,7 @@ class RoomModel {
         }
     }
 
-    getById(id) {
+    getTeamById(id) {
         return new this.Parse.Query(this.New())
             .include('teams')
             .get(id)

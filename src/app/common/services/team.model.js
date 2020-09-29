@@ -1,7 +1,7 @@
-class RoomModel {
+class TeamModel {
     constructor(Parse) {
         this.Parse = Parse;
-        this.name = "Room";
+        this.name = "Team";
         this.fields = [
             'name',
             'users',
@@ -13,12 +13,12 @@ class RoomModel {
     }
 
     New(obj) {
-        // create a new Room Parse Object
+        // create a new Team Parse Object
         if (angular.isUndefined(obj)) {
             const parseObject = new this.Parse.Object(this.name);
             this.Parse.defineAttributes(parseObject, this.fields);
             return parseObject;
-        } else {  // Exposing Room Parse Object Attributes (getters and setters)
+        } else {  // Exposing Team Parse Object Attributes (getters and setters)
             this.Parse.defineAttributes(obj, this.fields);
             return obj;
         }

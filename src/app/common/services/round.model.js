@@ -39,22 +39,23 @@ class RoundModel {
             .catch(error => Promise.reject(error));
     }
 
-    getByManager(manager) {
-        // get rounds by manager
+    getByRoom(room) {
+        // get rounds by room
         return new this.Parse.Query(this.New())
-            .include('manager')
-            .equalTo('manager', manager)
+            .include('room')
+            .equalTo('room', room)
             .descending('createdAt')
             .find()
             .then(results => {
                 results.forEach(result => {
                     this.Parse.defineAttributes(result, this.fields);
-                    this.Parse.defineAttributes(result.manager, this.UserModel.fields);
+                    this.Parse.defineAttributes(result.room, this.RoomModel.fields);
                 })
                 return Promise.resolve(results);
             })
             .catch(error => Promise.reject(error))
     }
+    // TODO: check that this.collection / this.data is updated
 
     getByUser(user) {
         return user;

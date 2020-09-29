@@ -1,5 +1,7 @@
 # TODO:
 
-- [ ] add component code to each component.js file
+- [x] add component code to each component.js file
 - [ ] replace entry point to index.html with root
-- [ ] fix root.module.js?
+- [x] fix root.module.js?
+- [ ] do the data models for each class
+    - [ ] compare with examples

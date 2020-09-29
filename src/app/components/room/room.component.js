@@ -10,6 +10,9 @@ angular.module('components.room')
         $stateProvider.state('room', {
             parent: 'app',
             url: '/room',
-            component: 'room'
+            component: 'room',
+            resolve: {
+
+            },
         });
     });
