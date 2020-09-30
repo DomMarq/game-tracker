@@ -11,6 +11,7 @@ angular
             .state('app', {
                 component: 'app',
                 parent: '',
-                redirectTo: 'home'
+                redirectTo: 'home',
+                url: '/'
             });
     });
