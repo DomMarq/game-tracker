@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2 (2020-09-30)
+## 0.3 (2020-09-30)
 
 ### Code Refactoring
 * Changed file structure to conform with the build system
