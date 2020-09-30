@@ -1,6 +1,6 @@
 <div>
     <h1> Create a New Room </h1>
-    
+
     <form class="simple-form">
         <label>Room Name: <input type="text" ng-model="room.name" required/></label>
         <br />
@@ -19,7 +19,7 @@
         <!-- TODO: add ability to add teammate names and such from creation page -->
         <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
         <button ng-click="$ctrl.createRoom(room);" value="Save" class="mdc-button--raised"><span class="mdc-button__label">Save</span></button>
-        
+
         <p ng-if=$ctrl.newRoomFormSubmission>{{ $ctrl.newRoomCreationMessage }}</p>
     </form>
 </div>
