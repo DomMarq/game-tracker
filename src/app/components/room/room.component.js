@@ -1,6 +1,9 @@
 const room = {
     templateUrl: './room.html',
-    controller: 'RoomController'
+    controller: 'RoomController',
+    bindings: {
+      roomInfo: '<'
+    }
 };
 
 // Home Component with Routing (Routed / Stateful)
@@ -12,7 +15,9 @@ angular.module('components.room')
             url: '/room',
             component: 'room',
             resolve: {
-
-            },
+              roomInfo: function(RoomModel) {
+                return RoomModel.getById('4xZV4yg6EE');
+              }
+            }
         });
     });

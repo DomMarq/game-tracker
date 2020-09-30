@@ -8,6 +8,7 @@ function RoomController() {
       };
       $ctrl.roomLoaded = false;
       $ctrl.updateRoomName = updateRoomName;
+      console.log('Room Info: ', $ctrl.roomInfo);
     }
 
     function updateRoomName(event) {
