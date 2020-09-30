@@ -1,6 +1,8 @@
-function NewRoomController(ExampleService) {
+function NewRoomController() {
     const $ctrl = this;
-    $ctrl.createRoom = createRoom;
+    $ctrl.$onInit = function() {
+      $ctrl.createRoom = createRoom;
+    }
 
     // Create a room object with user info and send the information to the backend
     function createRoom(room) {
@@ -13,10 +15,10 @@ function NewRoomController(ExampleService) {
         } else {
             var roomJson = angular.toJson(room);
             console.log(roomJson);
-            ExampleService.postData(roomJson).then(function() {
+            /*ExampleService.postData(roomJson).then(function() {
                 $ctrl.newRoomCreationMessage = "Room created successfully!";
                 $ctrl.newRoomFormSubmission = true;
-            })
+            })*/
         }
     };
 

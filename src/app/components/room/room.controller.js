@@ -1,26 +1,28 @@
 function RoomController() {
     const $ctrl = this;
-    $ctrl.roomLoaded = false;
-
-    $ctrl.room = {
-        name: "",
-        type: "",
-        teams: {}
+    $ctrl.$onInit = function() {
+      $ctrl.room = {
+          name: "",
+          type: "",
+          teams: {}
+      };
+      $ctrl.roomLoaded = false;
+      $ctrl.updateRoomName = updateRoomName;
     }
 
-    $ctrl.updateRoomName = function(event) {
+    function updateRoomName(event) {
         $ctrl.room = event.room;
     }
 
     // Load room information into room
-    ExampleService.getRoomData().then(function(response) {
+    /*ExampleService.getRoomData().then(function(response) {
         $ctrl.room = response.data["Game1"];
         console.log($ctrl.room);
         console.log($ctrl.room.name);
         $ctrl.roomLoaded = true;
-    })
+    })*/
 }
 
-// TODO: Add the room info request service
-RoomController.$inject = ['ExampleService'];
-angular.module('components.room').controller('RoomController', RoomController);
+angular
+  .module('components.room')
+  .controller('RoomController', RoomController);
