@@ -3,6 +3,5 @@ angular
         'components.home',
         'components.room',
         'components.newRoom',
-        'components.team',
-        'components.rnchange'
+        'components.team'
     ]);

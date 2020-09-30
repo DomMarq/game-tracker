@@ -1,5 +1,5 @@
 const rnchange = {
-    templateUrl: './rnchange/rnchange.html',
+    templateUrl: './rnchange.html',
     controller: 'RoomNameChangeController',
     bindings: {
         room: '<',
@@ -7,4 +7,5 @@ const rnchange = {
     }
 };
 
-angular.module('components.rnchange').component('rnchange', rnchange);
+angular.module('components.rnchange')
+    .component('rnchange', rnchange);

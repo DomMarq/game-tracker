@@ -1,7 +1,7 @@
 class RoomModel {
     constructor(Parse) {
         this.Parse = Parse;
-        this.name = "Room";
+        this.name = 'Room';
         this.fields = [
             'name',
             'gameType',
@@ -78,3 +78,7 @@ class RoomModel {
             .catch(error => Promise.reject(error));
     }
 }
+
+angular
+  .module('common')
+  .service('RoomModel', RoomModel);

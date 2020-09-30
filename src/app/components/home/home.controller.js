@@ -1,6 +1,8 @@
 function HomeController() {
   const $ctrl = this;
-  $ctrl.exampleVariable = "I am the home component";
+  $ctrl.$onInit = function() {
+    $ctrl.exampleVariable = "GameTracker Home";
+  }
 }
 
 angular.module('components.home').controller('HomeController', HomeController);
