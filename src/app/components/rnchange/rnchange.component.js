@@ -7,4 +7,5 @@ const rnchange = {
     }
 };
 
-angular.module('components.rnchange').component('rnchange', rnchange);
+angular.module('components.rnchange')
+    .component('rnchange', rnchange);

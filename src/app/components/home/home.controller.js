@@ -1,7 +1,7 @@
 function HomeController() {
   const $ctrl = this;
   $ctrl.$onInit = function() {
-    $ctrl.exampleVariable = "I am the home component";
+    $ctrl.exampleVariable = "GameTracker Home";
   }
 }
 
