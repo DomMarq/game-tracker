@@ -11,5 +11,5 @@ angular
       .state('auth.register', {
         url: '/register',
         component: 'register'
-      })
+      });
   });

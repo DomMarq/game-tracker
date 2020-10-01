@@ -16,5 +16,5 @@ angular
       .state('auth.login', {
         url: '/login',
         component: 'login'
-      })
+      });
   });
