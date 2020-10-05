@@ -6,5 +6,5 @@
         <!--room="$ctrl.room" on-update="$ctrl.updateRoomName($event);">-->
     <!--</rnchange>-->
     <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
-    <team ngIf="$ctrl.teamsLoaded" ng-repeat="team in $ctrl.teams" team="team"></team>
+    <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
 </div>

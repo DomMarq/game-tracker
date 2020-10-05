@@ -50,3 +50,7 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.teams-header {
+    background-color: rgba(172, 172, 172, 0.5);
+}
