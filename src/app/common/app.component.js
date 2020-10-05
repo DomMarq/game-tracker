@@ -12,6 +12,5 @@ angular
                 component: 'app',
                 parent: '',
                 redirectTo: 'home',
-                url: '/'
             });
     });
