@@ -34,3 +34,19 @@
 .navbar .buttons a:hover {
     background: rgb(34,100,20);
 }
+
+.vertical-divider {
+  border-top-width: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
+  height: 100%;
+}
+
+.team-attr {
+    text-align: center;
+}
+
+.team-card {
+    margin-top: 0;
+    margin-bottom: 0;
+}

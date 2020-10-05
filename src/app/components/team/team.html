@@ -1,6 +1,14 @@
 <!--Dominic Marques, Connor Kuse-->
-<md-card>
-    Team: {{ $ctrl.team.name }}<br>
-    Wins: {{ $ctrl.team.wins }}<br>
-    Losses: {{ $ctrl.team.losses }}
+<md-card layout="row" layout-align="center" class="team-card">
+    <div class="team-attr" flex="33">
+        Team: {{ $ctrl.team.name }}
+    </div>
+    <md-divider></md-divider>
+    <div class="team-attr" flex="33">
+        Wins: {{ $ctrl.team.wins }}
+    </div>
+    <md-divider></md-divider>
+    <div class="team-attr" flex="33">
+        Losses: {{ $ctrl.team.losses }}
+    </div>
 </md-card>

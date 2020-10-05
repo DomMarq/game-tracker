@@ -11,7 +11,6 @@ function RoomController(TeamModel) {
             .then(function(result) {
                 $ctrl.teams = result;
                 $ctrl.teamsLoaded = true;
-                console.log($ctrl.teams);
             });
     }
 }
