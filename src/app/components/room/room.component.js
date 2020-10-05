@@ -2,7 +2,8 @@ const room = {
     templateUrl: './room.html',
     controller: 'RoomController',
     bindings: {
-      roomInfo: '<'
+        roomInfo: '<',
+        roomTeams: '<'
     }
 };
 
@@ -15,9 +16,9 @@ angular.module('components.room')
             url: '/room',
             component: 'room',
             resolve: {
-              roomInfo: function(RoomModel) {
-                return RoomModel.getById('4xZV4yg6EE');
-              }
+                roomInfo: function(RoomModel) {
+                    return RoomModel.getById('4xZV4yg6EE');
+                }
             }
         });
     });

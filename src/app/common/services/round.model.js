@@ -1,7 +1,7 @@
 class RoundModel {
     constructor(Parse) {
         this.Parse = Parse;
-        this.name = "Round";
+        this.name = 'Round';
         this.fields = [
             'winner',
             'teams',
@@ -78,3 +78,7 @@ class RoundModel {
     // TODO: check that this.collection / this.data is updated
 
 }
+
+angular
+    .module('common')
+    .service('RoundModel', RoundModel);
