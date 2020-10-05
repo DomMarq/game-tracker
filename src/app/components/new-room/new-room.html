@@ -17,13 +17,11 @@
                         <md-option value="pong">Beer Pong</md-option>
                     </md-select>
                 </md-input-container>
-                <!-- <br> -->
                 <md-input-container class="new-room-input">
                     <label>Number of Teams:</label>
                     <input type="number" ng-model="room.teams" required />
                     <md-tooltip>Can be changed later!</md-tooltip>
                 </md-input-container>
-                <!-- <br /> -->
                 <!-- TODO: add ability to add teammate names and such from creation page -->
                 <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
                 <md-button ng-click="$ctrl.createRoom(room);" value="Save" class="md-raised md-primary">Save</md-button>
