@@ -1,4 +1,4 @@
-function AuthService() {
+/*function AuthService() {
   var authData = null;
 
   function storeAuthData(response) {
@@ -60,3 +60,4 @@ function AuthService() {
 angular
   .module('components.auth')
   .service('AuthService', AuthService);
+*/

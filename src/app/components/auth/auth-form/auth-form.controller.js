@@ -5,3 +5,7 @@ function AuthFormController () {
     $ctrl.isRegister = ($ctrl.button === 'Sign Up & Create Account') ? true : false;
   }
 }
+
+angular
+    .module('components.auth')
+    .controller('AuthFormController', AuthFormController);

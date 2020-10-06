@@ -26,6 +26,7 @@
     "@material/card": "^0.38.0",
     "@uirouter/angularjs": "^1.0.22",
     "@uirouter/visualizer": "^4.0.0",
+    "angular-material": "^1.2.1",
     "angular-parse": "^0.2.2",
     "moment": "^2.18.1",
     "ngVue": "^1.6.0",
