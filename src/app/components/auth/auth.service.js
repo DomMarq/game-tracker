@@ -15,10 +15,8 @@
     authData = null;
   }
 
-  this.login = function (user) {
-    return auth
-      .$signInWithEmailAndPassword(user.email, user.password)
-      .then(storeAuthData);
+  this.login = function (newUser) {
+    return;
   };
 
   this.register = function (newUser) {
@@ -29,6 +27,7 @@
 
     try {
       await user.signUp();
+      return user;
     } catch(error) {
       alert("Error: " + error.code + " " + error.message);
     }

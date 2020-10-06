@@ -11,7 +11,7 @@ function RegisterController() {
   }
 
   $ctrl.createUser = function(event) {
-
+    AuthService.register(event.user);
   }
 }
 

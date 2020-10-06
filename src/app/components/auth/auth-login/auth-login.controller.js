@@ -10,7 +10,7 @@ function LoginController() {
   }
 
   $ctrl.loginUser = function(event) {
-    
+    AuthService.login(event.user);
   }
 }
 
