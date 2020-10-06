@@ -1,4 +1,4 @@
-const auth-form = {
+const authForm = {
   templateUrl: './auth-form.html',
   controller: 'AuthFormController',
   bindings: {
@@ -10,4 +10,4 @@ const auth-form = {
 
 angular
   .module('components.auth')
-  .component('auth-form', auth-form);
+  .component('authForm', authForm);
