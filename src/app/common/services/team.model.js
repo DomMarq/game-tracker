@@ -1,7 +1,8 @@
 class TeamModel {
     constructor(Parse, RoomModel) {
         this.Parse = Parse;
-        this.name = "Team";
+        this.RoomModel = RoomModel;
+        this.name = 'Team';
         this.fields = [
             'name',
             'users',
@@ -61,3 +62,7 @@ class TeamModel {
     }
     // TODO: Add an ability to get teams given users
 }
+
+angular
+    .module('common')
+    .service('TeamModel', TeamModel);
