@@ -4,4 +4,5 @@ angular
         'components.room',
         'components.newRoom',
         'components.teams',
+        'components.auth'
     ]);

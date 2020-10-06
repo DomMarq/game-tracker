@@ -1,0 +1,8 @@
+<form>
+  <input ng-if="$ctrl.isRegister" required type="text" name="firstName" ng-model="$ctrl.user.firstName" />
+  <input ng-if="$ctrl.isRegister" required type="text" name="lastName" ng-model="$ctrl.user.lastName" />
+  <input required type="email" name="email" ng-model="$ctrl.user.email" />
+  <input required type="password" name="password" ng-model="$ctrl.user.password" />
+</form>
+
+<md-button ng-click="$ctrl.createRoom(room);" class="md-raised md-primary">{{ $ctrl.button }}</md-button>
