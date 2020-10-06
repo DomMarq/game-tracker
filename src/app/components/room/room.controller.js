@@ -12,6 +12,7 @@ function RoomController(TeamModel) {
                 $ctrl.teams = result;
                 $ctrl.teamsLoaded = true;
             });
+        $ctrl.loaded = true;
     }
 }
 

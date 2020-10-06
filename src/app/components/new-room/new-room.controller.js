@@ -2,6 +2,7 @@ function NewRoomController(RoomModel, $stateProvider, $state) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.createRoom = createRoom;
+        $ctrl.isSubmitted = false;
     }
 
     // Create a room object with user info and send the information to the backend
@@ -15,6 +16,7 @@ function NewRoomController(RoomModel, $stateProvider, $state) {
                 "There was an issue. Please try again.";
             $ctrl.newRoomFormSubmission = true;
         } else {
+            $ctrl.isSubmitted = true;
             var roomJson = angular.toJson(room);
             console.log(roomJson);
             /*ExampleService.postData(roomJson).then(function() {
