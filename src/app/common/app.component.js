@@ -12,6 +12,9 @@ angular
                 component: 'app',
                 parent: '',
                 redirectTo: 'home',
-                url: '/'
+                url: '/',
+                data: {
+                  requiredAuth: true
+                }
             });
     });
