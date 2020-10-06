@@ -13,11 +13,15 @@ angular.module('components.room')
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider.state('room', {
             parent: 'app',
-            url: '/room',
+            url: '/room/:id',
+            params: {
+                id: '4xZV4yg6EE'
+            },
             component: 'room',
             resolve: {
-                roomInfo: function(RoomModel) {
-                    return RoomModel.getById('4xZV4yg6EE');
+                roomInfo: function(RoomModel, $transition$) {
+                    var params = $transition$.params();
+                    return RoomModel.getById(params.id);
                 }
             }
         });
