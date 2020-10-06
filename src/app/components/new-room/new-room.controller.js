@@ -19,10 +19,7 @@ function NewRoomController(RoomModel, $stateProvider, $state) {
             $ctrl.isSubmitted = true;
             var roomJson = angular.toJson(room);
             console.log(roomJson);
-            /*ExampleService.postData(roomJson).then(function() {
-                $ctrl.newRoomCreationMessage = "Room created successfully!";
-                $ctrl.newRoomFormSubmission = true;
-            })*/
+
             var newRoom = RoomModel.New();
             newRoom.save({
                     name: room.name,

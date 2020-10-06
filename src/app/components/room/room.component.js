@@ -3,7 +3,6 @@ const room = {
     controller: 'RoomController',
     bindings: {
         roomInfo: '<',
-        roomTeams: '<'
     }
 };
 
