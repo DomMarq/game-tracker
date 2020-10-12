@@ -1,4 +1,4 @@
-function AuthService(Parse) {
+function AuthService() {
     // var authData = null;
 
     function storeAuthData(response) {
@@ -19,21 +19,29 @@ function AuthService(Parse) {
     }
 
     this.login = function(user) {
-        const user = await Parse.User.logIn(user.username, user.password);
-        return user;
+        Parse.User.logIn(user.username, user.password)
+            .then((user) => {
+                // Do stuff after successful login
+                console.log('Logged in user', user);
+            })
+            .catch(error => {
+                console.error('Error while logging in user', error);
+            })
     };
 
     this.register = function(newUser) {
-        var user = new Parse.User();
-        user.set("username", newUser.username);
-        user.set("password", newUser.password);
-        user.set("email", newUser.email);
+        const user = new Parse.User()
+        user.set('username', newUser.username);
+        user.set('email', newUser.email);
+        user.set('password', newUser.password);
 
-        try {
-            await user.signUp();
-        } catch (error) {
-            alert("Error: " + error.code + " " + error.message);
-        }
+        user.signUp()
+            .then((user) => {
+                console.log('User signed up', user);
+            })
+            .catch(error => {
+                console.error('Error while signing up user', error);
+            });
     };
 
     this.logout = function() {
