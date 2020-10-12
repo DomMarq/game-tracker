@@ -1,8 +1,26 @@
-<form>
-  <input ng-if="$ctrl.isRegister" required type="text" name="firstName" ng-model="$ctrl.user.firstName" />
-  <input ng-if="$ctrl.isRegister" required type="text" name="lastName" ng-model="$ctrl.user.lastName" />
-  <input required type="email" name="email" ng-model="$ctrl.user.email" />
-  <input required type="password" name="password" ng-model="$ctrl.user.password" />
-</form>
-
-<md-button ng-click="$ctrl.createRoom(room);" class="md-raised md-primary">{{ $ctrl.button }}</md-button>
+<md-card>
+    <md-card-title>
+        <span class="md-headline">Create an account</span>
+    </md-card-title>
+    <md-card-content layout="column">
+            <!-- <md-input-container>
+        <input ng-if="$ctrl.isRegister" required type="text" name="firstName" ng-model="$ctrl.user.firstName" />
+    </md-input-container> -->
+            <md-input-container>
+                <label>Username</label>
+                <input ng-if="$ctrl.isRegister" required type="text" name="username" ng-model="$ctrl.user.username" />
+            </md-input-container>
+            <md-input-container>
+                <label>Email</label>
+                <input required type="email" name="email" ng-model="$ctrl.user.email" />
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input required type="password" name="password" ng-model="$ctrl.user.password" />
+            </md-input-container>
+            <div layout="row">
+                <md-button ng-click="$ctrl.submit();" value="Save" class="md-raised md-primary">{{ $ctrl.button }}</md-button>
+                <md-progress-circular ng-if="$ctrl.isSubmitted" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+            </div>
+    </md-card-content>
+</md-card>
