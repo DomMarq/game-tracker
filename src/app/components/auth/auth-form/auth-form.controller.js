@@ -1,7 +1,10 @@
-function AuthFormController($state) {
+function AuthFormController(AuthService, $state) {
     const $ctrl = this;
 
     $ctrl.$onInit = function() {
+        if (AuthService.isAuthenticated()) {
+          $state.go('home');
+        }
         $ctrl.isRegister = ($ctrl.button === 'Sign Up & Create Account') ?
             true : false;
         $ctrl.isSubmitted = false;
@@ -17,7 +20,7 @@ function AuthFormController($state) {
         $state.go('home');
     }
 }
-AuthFormController.$inject = ['$state'];
+AuthFormController.$inject = ['AuthService', '$state'];
 
 angular
     .module('components.auth')
