@@ -6,9 +6,9 @@
             <!-- <md-input-container>
         <input ng-if="$ctrl.isRegister" required type="text" name="firstName" ng-model="$ctrl.user.firstName" />
     </md-input-container> -->
-            <md-input-container>
+            <md-input-container ng-if="$ctrl.isRegister">
                 <label>Username</label>
-                <input ng-if="$ctrl.isRegister" required type="text" name="username" ng-model="$ctrl.user.username" />
+                <input required type="text" name="username" ng-model="$ctrl.user.username" />
             </md-input-container>
             <md-input-container>
                 <label>Email</label>
