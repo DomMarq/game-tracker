@@ -19,7 +19,7 @@ function AuthService() {
     }
 
     this.login = function(user) {
-        Parse.User.logIn(user.username, user.password)
+        Parse.User.logIn(user.email, user.password)
             .then((user) => {
                 // Do stuff after successful login
                 console.log('Logged in user', user);

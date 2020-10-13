@@ -1,4 +1,4 @@
-function AuthFormController() {
+function AuthFormController($state) {
     const $ctrl = this;
 
     $ctrl.$onInit = function() {
@@ -8,16 +8,16 @@ function AuthFormController() {
     }
 
     $ctrl.submit = function() {
-        this.onSubmit({
-            $event: {
-                user: $ctrl.user
-            }
+        $ctrl.onSubmit({
+            user: $ctrl.user
         });
         $ctrl.isSubmitted = true;
         console.log($ctrl.user);
-        // $ctrl.onSubmit = $ctrl.user;
+        // TODO: Send this to wherever the user was trying to go before.
+        $state.go('home');
     }
 }
+AuthFormController.$inject = ['$state'];
 
 angular
     .module('components.auth')

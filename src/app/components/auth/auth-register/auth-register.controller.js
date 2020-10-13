@@ -10,9 +10,9 @@ function RegisterController(AuthService) {
         }
     }
 
-    $ctrl.createUser = function(event) {
-        console.log(event);
-        AuthService.register(event);
+    $ctrl.createUser = function(user) {
+        console.log(user);
+        AuthService.register(user);
     }
 }
 
