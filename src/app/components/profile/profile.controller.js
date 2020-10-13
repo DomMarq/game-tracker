@@ -7,6 +7,12 @@ function ProfileController(AuthService, $state) {
         }
         $ctrl.user = AuthService.getUser();
     }
+
+    $ctrl.submit = function() {
+      AuthService.logout();
+      console.log("User logged out");
+      $state.go('auth.login');
+    }
 }
 
 ProfileController.$inject = ['AuthService', '$state'];

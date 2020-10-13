@@ -2,7 +2,7 @@ const room = {
     templateUrl: './room.html',
     controller: 'RoomController',
     bindings: {
-        roomInfo: '<',
+        roomInfo: '<'
     }
 };
 
