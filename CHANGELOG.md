@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4 (2020-10-14)
+
+### Features
+* Added authentication modules and routines
+* Added ability to create new rooms
+* Added URL parameters for accessing different rooms
+* Various UI improvements
+
+---
 ## 0.3 (2020-09-30)
 
 ### Code Refactoring
