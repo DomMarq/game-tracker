@@ -3,5 +3,7 @@ angular
         'components.home',
         'components.room',
         'components.newRoom',
-        'components.team'
+        'components.teams',
+        'components.auth',
+        'components.profile'
     ]);

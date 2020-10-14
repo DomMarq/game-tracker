@@ -1,25 +1,34 @@
 <div>
-    <h1> Create a New Room </h1>
-
-    <form class="simple-form">
-        <label>Room Name: <input type="text" ng-model="room.name" required/></label>
-        <br />
-        <label for="roomSelect">Game Type: </label>
-        <select name="roomSelect" id="roomSelect" ng-model="room.type" required>
-            <option value="">Select Game Type:</option>
-            <option value="dye">Beer Dye</option>
-            <option value="euchre">Euchre</option>
-            <option value="golf">Golf</option>
-            <option value="cah">Cards Against Humanity</option>
-            <option value="pong">Beer Pong</option>
-        </select>
-        <br>
-        <label>Number of Teams: <input type="number" ng-model="room.teams" placeholder="can be changed later" required/></label>
-        <br />
-        <!-- TODO: add ability to add teammate names and such from creation page -->
-        <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
-        <button ng-click="$ctrl.createRoom(room);" value="Save" class="mdc-button--raised"><span class="mdc-button__label">Save</span></button>
-
-        <p ng-if=$ctrl.newRoomFormSubmission>{{ $ctrl.newRoomCreationMessage }}</p>
-    </form>
+    <md-card>
+        <md-card-title>
+            <span class="md-headline">Create a New Room </span>
+        </md-card-title>
+        <md-card-content layout="column">
+            <md-input-container class="new-room-input">
+                <label>Room Name</label>
+                <input type="text" ng-model="room.name" required />
+            </md-input-container>
+            <md-input-container>
+                <md-select id="roomSelect" ng-model="room.type" placeholder="Select Game Type" required>
+                    <md-option value="dye">Beer Dye</md-option>
+                    <md-option value="euchre">Euchre</md-option>
+                    <md-option value="golf">Golf</md-option>
+                    <md-option value="cah">Cards Against Humanity</md-option>
+                    <md-option value="pong">Beer Pong</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="new-room-input">
+                <label>Number of Teams:</label>
+                <input type="number" ng-model="room.teams" required />
+                <md-tooltip>Can be changed later!</md-tooltip>
+            </md-input-container>
+            <!-- TODO: add ability to add teammate names and such from creation page -->
+            <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
+            <div layout="row">
+                <md-button ng-click="$ctrl.createRoom(room);" value="Save" class="md-raised md-primary">Save</md-button>
+                <md-progress-circular ng-if="$ctrl.isSubmitted" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+            </div>
+            <p ng-if=$ctrl.newRoomFormSubmission>{{ $ctrl.newRoomCreationMessage }}</p>
+        </md-card-content>
+    </md-card>
 </div>

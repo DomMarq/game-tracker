@@ -1,0 +1,15 @@
+<!--Dominic Marques, Connor Kuse-->
+<md-card layout="row" layout-align="center" class="team-card teams-header" >
+    <h3 class="team-attr" flex="33" >
+        Team
+    </h3>
+    <md-divider></md-divider>
+    <h3 class="team-attr" flex="33">
+        Wins
+    </h3>
+    <md-divider></md-divider>
+    <h3 class="team-attr" flex="33">
+        Losses
+    </h3>
+</md-card>
+<team ng-repeat="team in $ctrl.teams" team="team"></team>

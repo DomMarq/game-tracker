@@ -7,4 +7,5 @@ const team = {
 };
 
 // team Component with Routing (Routed / Stateful)
-angular.module('components.team').component('team', team);
+angular.module('components.teams')
+    .component('team', team);

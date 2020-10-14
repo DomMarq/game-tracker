@@ -1,7 +1,12 @@
 const navbar = {
     templateUrl: './navbar.html',
-    controller: 'NavbarController'
+    controller: 'NavbarController',
+    bindings: {
+      username: '<'
+    }
 };
 
 // navbar Component with Routing (Routed / Stateful)
-angular.module('common').component('navbar', navbar);
+angular
+  .module('common')
+  .component('navbar', navbar);
