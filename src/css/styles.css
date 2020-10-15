@@ -54,3 +54,8 @@
 .teams-header {
     background-color: rgba(172, 172, 172, 0.5);
 }
+
+.roomSelect {
+    /* Remove top margin so the dropdown doesn't look so weird */
+    margin-top: 0;
+}
