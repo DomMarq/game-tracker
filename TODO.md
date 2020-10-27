@@ -16,7 +16,7 @@
 - [ ] homepage
     - [ ] Help / FAQs
 - [ ] Improve UI/UX
-    - [ ] Unified color scheme using (this theme)[https://material.io/resources/color/#!/?view.left=0&view.right=0&secondary.color=424242&secondary.text.color=ffffff&primary.color=7E57C2]
+    - [ ] Unified color scheme using [this theme](https://material.io/resources/color/#!/?view.left=0&view.right=0&secondary.color=424242&secondary.text.color=ffffff&primary.color=7E57C2)
 - [ ] deploy to prod
 - [ ] rounds stuff
     - [ ] creation
