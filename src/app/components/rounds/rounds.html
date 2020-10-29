@@ -1,0 +1,15 @@
+<!--Dominic Marques, Connor Kuse-->
+<md-card layout="row" layout-align="center" class="round-card rounds-header" >
+    <h3 class="round-attr" flex="33" >
+        Round
+    </h3>
+    <md-divider></md-divider>
+    <h3 class="round-attr" flex="33">
+        Wins
+    </h3>
+    <md-divider></md-divider>
+    <h3 class="round-attr" flex="33">
+        Losses
+    </h3>
+</md-card>
+<round ng-repeat="round in $ctrl.rounds" round="round"></round>
