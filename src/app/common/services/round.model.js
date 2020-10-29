@@ -1,7 +1,9 @@
 class RoundModel {
-    constructor(Parse) {
+    constructor(Parse, RoomModel, TeamModel) {
         this.Parse = Parse;
         this.name = 'Round';
+        this.RoomModel = RoomModel;
+        this.TeamModel = TeamModel;
         this.fields = [
             'winner',
             'teams',
@@ -49,7 +51,16 @@ class RoundModel {
         return new this.Parse.Query(this.New())
             .get(id)
             .then(result => {
-                this.Parse.defineAttributes(result, this.fields);
+                this.Parse.defineAttributes(result, this
+                    .fields);
+                this.Parse.defineAttributes(result.room,
+                    this.RoomModel.fields);
+                this.Parse.defineAttributes(result.loser, this
+                    .TeamModel
+                    .fields);
+                this.Parse.defineAttributes(result.winner, this
+                    .TeamModel
+                    .fields);
                 this.data = result;
                 return Promise.resolve(result);
             })
@@ -69,6 +80,14 @@ class RoundModel {
                         .fields);
                     this.Parse.defineAttributes(result.room,
                         this.RoomModel.fields);
+                    this.Parse.defineAttributes(result.loser,
+                        this
+                        .TeamModel
+                        .fields);
+                    this.Parse.defineAttributes(result.winner,
+                        this
+                        .TeamModel
+                        .fields);
                 });
                 this.collection = results;
                 return Promise.resolve(results);

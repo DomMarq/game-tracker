@@ -42,16 +42,29 @@
   height: 100%;
 }
 
-.team-attr {
+.round-attr {
     text-align: center;
 }
 
-.team-card {
+.round-card {
     margin-top: 0;
     margin-bottom: 0;
 }
 
 .teams-header {
+    background-color: rgba(172, 172, 172, 0.5);
+}
+
+.round-attr {
+    text-align: center;
+}
+
+.round-card {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.rounds-header {
     background-color: rgba(172, 172, 172, 0.5);
 }
 

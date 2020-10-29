@@ -1,14 +1,18 @@
 <!--Dominic Marques, Connor Kuse-->
 <md-card layout="row" layout-align="center" class="round-card">
-    <div class="round-attr" flex="33">
-        {{ $ctrl.round.name }}
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.updatedAt }}
     </div>
     <md-divider></md-divider>
-    <div class="round-attr" flex="33">
-        {{ $ctrl.round.wins }}
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.winnerScore }} - {{ $ctrl.round.loserScore }}
     </div>
     <md-divider></md-divider>
-    <div class="round-attr" flex="33">
-        {{ $ctrl.round.losses }}
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.winner.name }}
+    </div>
+    <md-divider></md-divider>
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.loser.name }}
     </div>
 </md-card>
