@@ -34,13 +34,33 @@ class TeamModel {
         return new this.Parse.Query(this.New())
             .get(id)
             .then(result => {
-                this.Parse.defineAttributes(result, this.fields);
+                this.Parse.defineAttributes(result, this
+                    .fields);
+                this.Parse.defineAttributes(result.room,
+                    this.RoomModel.fields);
                 this.data = result;
                 return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
     }
 
+    getByNameAndRoom(name, room) {
+        return new this.Parse.Query(this.New())
+            .include('name')
+            .include('room')
+            .equalTo('room', room)
+            .equalTo('name', name)
+            .then(result => {
+                if (result.length > 1) result = result[0];
+                this.Parse.defineAttributes(result, this
+                    .fields);
+                this.Parse.defineAttributes(result.room,
+                    this.RoomModel.fields);
+                this.data = result;
+                return Promise.resolve(result);
+            })
+            .catch(error => Promise.reject(error));
+    }
     // get team by room
     getByRoom(room) {
         return new this.Parse.Query(this.New())
