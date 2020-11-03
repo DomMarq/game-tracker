@@ -9,8 +9,6 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
 
     this.showAddRound = function(ev) {
         $mdDialog.show({
-            // controller: AddRoundController,
-            // templateUrl: './add-round/add-round.html',
             contentElement: '#addRoundDialog',
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application to prevent interaction outside of dialog
@@ -54,6 +52,13 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
                         });
                 });
         }
+    };
+
+    this.roundDelete = function(event) {
+        RoundModel.getByRoom($ctrl.roomInfo)
+            .then(function(result) {
+                $ctrl.rounds = result;
+            });
     };
 }
 

@@ -2,7 +2,8 @@ const round = {
     templateUrl: './round.html',
     controller: 'RoundController',
     bindings: {
-        round: '<'
+        round: '<',
+        roundDelete: '&'
     }
 };
 
