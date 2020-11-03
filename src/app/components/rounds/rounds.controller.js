@@ -34,8 +34,8 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
             $ctrl.formSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
-            var roundJson = angular.toJson(round);
-            console.log(roundJson);
+            // var roundJson = angular.toJson(round);
+            // console.log(roundJson);
 
             var newRound = RoundModel.New();
             newRound.save({
@@ -46,9 +46,12 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
                     room: $ctrl.roomInfo
                 })
                 .then((newRound) => {
-                    console.log(newRound);
                     $ctrl.rounds.unshift(newRound);
                     $mdDialog.hide();
+                    RoundModel.getByRoom($ctrl.roomInfo)
+                        .then(function(result) {
+                            $ctrl.rounds = result;
+                        });
                 });
         }
     };
