@@ -4,7 +4,7 @@
         {{ $ctrl.round.updatedAt }}
     </div>
     <md-divider></md-divider>
-    <div class="round-attr" flex="25">
+    <div class="round-attr" flex="20">
         {{ $ctrl.round.winnerScore }} - {{ $ctrl.round.loserScore }}
     </div>
     <md-divider></md-divider>
@@ -15,4 +15,8 @@
     <div class="round-attr" flex="25">
         {{ $ctrl.round.loser.name }}
     </div>
+    <md-divider></md-divider>
+    <md-button ng-click="" class="md-icon-button md-primary add-round" aria-label="Add Round" flex="5">
+        <md-icon>delete</md-icon>
+    </md-button>
 </md-card>

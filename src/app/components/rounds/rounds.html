@@ -4,7 +4,7 @@
         Round Completed
     </h3>
     <md-divider></md-divider>
-    <h3 class="round-attr" flex="25">
+    <h3 class="round-attr" flex="20">
         Score
     </h3>
     <md-divider></md-divider>
@@ -15,10 +15,11 @@
     <h3 class="round-attr" flex="25">
         Loser
     </h3>
+    <md-divider></md-divider>
+    <md-button ng-click="$ctrl.showAddRound($event)" class="md-icon-button md-primary add-round" aria-label="Add Round" flex="5">
+        <md-icon>add</md-icon>
+    </md-button>
 </md-card>
-<md-button ng-click="$ctrl.showAddRound($event)" class="md-raised md-primary">
-    Add Round
-</md-button>
 
 
 <!-- Modal for adding a round -->
