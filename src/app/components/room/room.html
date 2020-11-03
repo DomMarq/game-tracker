@@ -1,16 +1,16 @@
 <!--Dominic Marques, Connor Kuse-->
 <!--View the information about a room - games, team records, etc.-->
 <md-progress-linear md-mode="query" ng-if="!$ctrl.loaded"></md-progress-linear>
-<!-- <div ng-if="$ctrl.loaded"> -->
-    <!-- <div layout="row"> -->
-        <!-- <div> -->
-    <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
-    <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
-<!-- </div>
-<div> -->
-    <qrcode data="{{$ctrl.url}}" href="{{$ctrl.url}}"></qrcode>
-<!-- </div> -->
+<div ng-if="$ctrl.loaded">
+    <div layout="row">
+        <div>
+            <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
+            <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
+        </div>
+    </div>
     <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams" roomInfo="$ctrl.roomInfo"></rounds>
     <br>
     <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
-<!-- </div> -->
+    <md-button ng-click="$ctrl.showQR=true" ng-if="!$ctrl.showQR" class="md-raised md-primary">Show QR Code</md-button>
+    <qrcode ng-if="$ctrl.showQR" data="{{$ctrl.url}}" size="500"></qrcode>
+</div>
