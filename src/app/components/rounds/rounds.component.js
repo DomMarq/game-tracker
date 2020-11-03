@@ -3,7 +3,8 @@ const rounds = {
     controller: 'RoundsController',
     bindings: {
         rounds: '<',
-        teams: '<'
+        teams: '<',
+        roomInfo: '<'
     }
 };
 

@@ -16,7 +16,9 @@
         Loser
     </h3>
 </md-card>
-<md-button ng-click="$ctrl.showAddRound($event)" class="md-raised md-primary">Add Round</md-button>
+<md-button ng-click="$ctrl.showAddRound($event)" class="md-raised md-primary">
+    Add Round
+</md-button>
 <div style="visibility: hidden">
     <div class="md-dialog-container" id="addRoundDialog">
         <md-dialog layout-align="center">
@@ -34,7 +36,7 @@
                 </md-input-container>
                 <md-input-container class="round-attr">
                     <label>Winning Team</label>
-                    <md-select ng-model="round.winner">
+                    <md-select ng-model="round.winner" required>
                         <md-option ng-repeat="team in $ctrl.teams" ng-value="team">
                             {{ team.name }}
                         </md-option>
@@ -42,14 +44,17 @@
                 </md-input-container>
                 <md-input-container class="round-attr">
                     <label>Losing Team</label>
-                    <md-select ng-model="round.loser">
+                    <md-select ng-model="round.loser" required>
                         <md-option><em>None</em></md-option>
                         <md-option ng-repeat="team in $ctrl.teams" ng-value="team" md-on-open="loadTeams()">
                             {{ team.name }}
                         </md-option>
                     </md-select>
                 </md-input-container>
+                <md-button ng-click="$ctrl.createRound(round);" value="Submit" class="md-raised md-primary">Submit</md-button>
             </form>
+            <p ng-if=$ctrl.formSubmission>{{ $ctrl.newRoomCreationMessage }}</p>
+
         </md-dialog>
     </div>
 </div>
