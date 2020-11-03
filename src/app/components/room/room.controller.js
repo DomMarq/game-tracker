@@ -1,4 +1,4 @@
-function RoomController(TeamModel, RoundModel) {
+function RoomController(TeamModel, RoundModel, $location) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.room = {
@@ -18,10 +18,11 @@ function RoomController(TeamModel, RoundModel) {
                 $ctrl.roundsLoaded = true;
             });
         $ctrl.loaded = true;
+        $ctrl.url = $location.absUrl();
     }
 }
 
-RoomController.$inject = ['TeamModel', 'RoundModel'];
+RoomController.$inject = ['TeamModel', 'RoundModel', '$location'];
 angular
     .module('components.room')
     .controller('RoomController', RoomController);
