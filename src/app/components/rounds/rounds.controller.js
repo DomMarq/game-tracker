@@ -1,5 +1,11 @@
-function RoundsController($mdDialog, RoundModel) {
+function RoundsController($mdDialog, RoundModel, RoomModel) {
     var $ctrl = this;
+    console.log($ctrl.roomInfo);
+
+    $ctrl.$onInit = function() {
+        console.log(RoomModel.data);
+        $ctrl.roomInfo = RoomModel.data;
+    }
 
     this.showAddRound = function(ev) {
         $mdDialog.show({
@@ -41,11 +47,13 @@ function RoundsController($mdDialog, RoundModel) {
                 })
                 .then((newRound) => {
                     console.log(newRound);
+                    $ctrl.rounds.unshift(newRound);
+                    $mdDialog.hide();
                 });
         }
     };
 }
 
-RoundsController.$inject = ['$mdDialog', 'RoundModel'];
+RoundsController.$inject = ['$mdDialog', 'RoundModel', 'RoomModel'];
 angular.module('components.rounds')
     .controller('RoundsController', RoundsController);
