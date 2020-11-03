@@ -2,7 +2,8 @@ const rounds = {
     templateUrl: './rounds.html',
     controller: 'RoundsController',
     bindings: {
-        rounds: '<'
+        rounds: '<',
+        teams: '<'
     }
 };
 

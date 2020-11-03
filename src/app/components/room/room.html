@@ -4,6 +4,6 @@
 <div ng-if="$ctrl.loaded">
     <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
     <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
-    <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds"></rounds>
+    <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams"></rounds>
     <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
 </div>
