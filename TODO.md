@@ -25,7 +25,7 @@
     - [ ] team creation
     - [ ] editing
     - [ ] deletion
-
+- [ ] Add message if login failed
 
 ## Dominic Stories
 - [ ] QR Code generator  (user story)
