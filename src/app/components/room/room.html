@@ -11,6 +11,17 @@
     <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams" roomInfo="$ctrl.roomInfo"></rounds>
     <br>
     <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
-    <md-button ng-click="$ctrl.showQR=true" ng-if="!$ctrl.showQR" class="md-raised md-primary">Show QR Code</md-button>
-    <qrcode ng-if="$ctrl.showQR" data="{{$ctrl.url}}" size="500"></qrcode>
+    <md-button ng-click="$ctrl.showQR($event)" class="md-raised md-primary">
+        <md-tooltip md-delay="100">Show QR Code</md-tooltip>
+        Show QR Code
+    </md-button>
+    <br>
 </div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="qrDialog">
+      <md-dialog layout-padding aria-label="Room QR Code">
+          <qrcode ng-if="$ctrl.showQR" data="{{$ctrl.url}}" size="500em"></qrcode>
+      </md-dialog>
+    </div>
+  </div>
