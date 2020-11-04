@@ -1,4 +1,4 @@
-function RoomController(TeamModel, RoundModel, AuthService, $state) {
+function RoomController(TeamModel, RoundModel, AuthService) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.room = {
@@ -18,8 +18,7 @@ function RoomController(TeamModel, RoundModel, AuthService, $state) {
                 $ctrl.roundsLoaded = true;
             });
         $ctrl.loaded = true;
-        $ctrl.user = AuthService.getUser();
-        console.log($ctrl.user);
+        $ctrl.isAdmin = AuthService.isAdmin($ctrl.roomInfo);
     };
 
     $ctrl.addUser = function(user) {
@@ -41,7 +40,7 @@ function RoomController(TeamModel, RoundModel, AuthService, $state) {
     };
 }
 
-RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService', '$state'];
+RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService'];
 angular
     .module('components.room')
     .controller('RoomController', RoomController);
