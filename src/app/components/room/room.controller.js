@@ -1,4 +1,4 @@
-function RoomController(TeamModel, RoundModel) {
+function RoomController(TeamModel, RoundModel, AuthService, $state) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.room = {
@@ -18,10 +18,33 @@ function RoomController(TeamModel, RoundModel) {
                 $ctrl.roundsLoaded = true;
             });
         $ctrl.loaded = true;
-    }
+        // if (!AuthService.isReadable($ctrl.roomInfo)) {
+        //     $state.go('auth.login');
+        // }
+        $ctrl.user = AuthService.getUser();
+        console.log($ctrl.user);
+    };
+
+    $ctrl.addUser = function(user) {
+        var groupACL = $ctrl.roomInfo.getACL();
+        groupACL.setReadAccess(user, true);
+
+        $ctrl.roomInfo.setACL(groupACL);
+        $ctrl.roomInfo.save();
+    };
+
+    $ctrl.kickUser = function(user) {
+        // TODO: Add a check to make sure that [user] is not the admin
+        var groupACL = $ctrl.roomInfo.getACL();
+        groupACL.setReadAccess(user, false);
+        groupACL.setWriteAccess(user, false);
+
+        $ctrl.roomInfo.setACL(groupACL);
+        $ctrl.roomInfo.save();
+    };
 }
 
-RoomController.$inject = ['TeamModel', 'RoundModel'];
+RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService', '$state'];
 angular
     .module('components.room')
     .controller('RoomController', RoomController);

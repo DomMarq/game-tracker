@@ -65,6 +65,12 @@ function AuthService() {
         return Parse.User.current();
     };
 
+    this.isReadable = function(obj) {
+        console.log(obj.getACL());
+        return obj.getACL()
+            .getReadAccess(Parse.User.current());
+    };
+
 }
 
 angular

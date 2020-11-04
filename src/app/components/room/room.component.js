@@ -18,9 +18,20 @@ angular.module('components.room')
             },
             component: 'room',
             resolve: {
-                roomInfo: function(RoomModel, $transition$) {
+                roomInfo: function(RoomModel, $transition$,
+                    $state, AuthService) {
                     var params = $transition$.params();
-                    return RoomModel.getById(params.id);
+                    // console.log(RoomModel.getById(params.id));
+                    return RoomModel.getById(params.id)
+                        .catch((error) => {
+                            console.log(error);
+                            if (AuthService
+                                .isAuthenticated) {
+                                $state.go('home');
+                            } else {
+                                $state.go('profile');
+                            }
+                        });
                 }
             }
         });
