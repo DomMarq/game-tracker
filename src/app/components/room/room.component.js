@@ -25,11 +25,13 @@ angular.module('components.room')
                     return RoomModel.getById(params.id)
                         .catch((error) => {
                             console.log(error);
-                            if (AuthService
-                                .isAuthenticated) {
-                                $state.go('home');
-                            } else {
-                                $state.go('profile');
+                            if (error.code === 101) {
+                                if (AuthService
+                                    .isAuthenticated) {
+                                    $state.go('home');
+                                } else {
+                                    $state.go('profile');
+                                }
                             }
                         });
                 }

@@ -18,9 +18,6 @@ function RoomController(TeamModel, RoundModel, AuthService, $state) {
                 $ctrl.roundsLoaded = true;
             });
         $ctrl.loaded = true;
-        // if (!AuthService.isReadable($ctrl.roomInfo)) {
-        //     $state.go('auth.login');
-        // }
         $ctrl.user = AuthService.getUser();
         console.log($ctrl.user);
     };
