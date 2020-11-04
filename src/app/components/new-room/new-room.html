@@ -23,6 +23,9 @@
                     <input type="number" ng-model="room.teams" required />
                     <md-tooltip>Can be changed later!</md-tooltip>
                 </md-input-container>
+                <md-input-container ng-if="$ctrl.isLoggedIn">
+                    <md-checkbox ng-model="room.private">Make this room private</md-checkbox>
+                </md-input-container>
                 <!-- TODO: add ability to add teammate names and such from creation page -->
                 <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
                 <div layout="row">

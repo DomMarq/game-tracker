@@ -1,8 +1,9 @@
-function NewRoomController(RoomModel, $stateProvider, $state) {
+function NewRoomController(RoomModel, $stateProvider, $state, AuthService) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.createRoom = createRoom;
         $ctrl.isSubmitted = false;
+        $ctrl.isLoggedIn = AuthService.isAuthenticated;
     }
 
     // Create a room object with user info and send the information to the backend
@@ -27,6 +28,8 @@ function NewRoomController(RoomModel, $stateProvider, $state) {
                 })
                 .then((newRoom) => {
                     console.log(newRoom);
+                    if (room.private && $ctrl.isLoggedIn) AuthService
+                        .setAdmin(newRoom);
                     $state.go('room', {
                         id: newRoom.id
                     });
@@ -36,6 +39,6 @@ function NewRoomController(RoomModel, $stateProvider, $state) {
 
 }
 
-NewRoomController.$inject = ['RoomModel', '$window', '$state'];
+NewRoomController.$inject = ['RoomModel', '$window', '$state', 'AuthService'];
 angular.module('components.newRoom')
     .controller('NewRoomController', NewRoomController);

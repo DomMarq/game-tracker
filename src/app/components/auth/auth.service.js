@@ -71,6 +71,17 @@ function AuthService() {
             .getReadAccess(Parse.User.current());
     };
 
+    this.isAdmin = function(obj) {
+        return obj.getACL()
+            .getWriteAccess(Parse.User.current());
+    }
+
+    this.setAdmin = function(obj) {
+        obj.setACL(new Parse.ACL(
+            Parse.User.current()));
+        obj.save();
+    };
+
 }
 
 angular
