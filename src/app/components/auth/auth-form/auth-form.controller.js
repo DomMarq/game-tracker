@@ -3,7 +3,7 @@ function AuthFormController(AuthService, $state) {
 
     $ctrl.$onInit = function() {
         if (AuthService.isAuthenticated()) {
-          $state.go('home');
+            $state.go('home');
         }
         $ctrl.isRegister = ($ctrl.button === 'Sign Up & Create Account') ?
             true : false;
@@ -17,7 +17,10 @@ function AuthFormController(AuthService, $state) {
         $ctrl.isSubmitted = true;
         console.log($ctrl.user);
         // TODO: Send this to wherever the user was trying to go before.
-        $state.go('home');
+        // TODO: Add message if failed
+        if (AuthService.isAuthenticated) {
+            $state.go('home');
+        }
     }
 }
 AuthFormController.$inject = ['AuthService', '$state'];
