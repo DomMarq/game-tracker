@@ -3,7 +3,11 @@ function TeamController(TeamModel) {
     $ctrl.isDeleted = false;
 
     this.$onInit = function() {
-        $ctrl.
+        UserModel.getByRoom($ctrl.roomInfo)
+            .then(function(result) {
+                $ctrl.users = result;
+                $ctrl.usersLoaded = true;
+            })
     }
 
     this.deleteTeam = function() {
