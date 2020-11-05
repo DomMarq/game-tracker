@@ -1,14 +1,21 @@
 <!--Dominic Marques, Connor Kuse-->
-<md-card layout="row" layout-align="center" class="team-card">
-    <div class="team-attr" flex="33">
+<md-card layout="column" layout-align="center" class="team-card">
+    <div class="team-attr" flex="35">
         {{ $ctrl.team.name }}
     </div>
     <md-divider></md-divider>
-    <div class="team-attr" flex="33">
-        {{ $ctrl.team.wins }}
+    <div class="team-attr" flex="30">
+        Wins: {{ $ctrl.team.wins }}
     </div>
     <md-divider></md-divider>
-    <div class="team-attr" flex="33">
-        {{ $ctrl.team.losses }}
+    <div class="team-attr" flex="30">
+        Losses: {{ $ctrl.team.losses }}
     </div>
+    <md-divider></md-divider>
+    <users ng-repeat="user in $ctrl.users" user="user"></users>
+    <md-divider></md-divider>
+    <md-button ng-if="!$ctrl.isDeleted" ng-click="$ctrl.deleteTeam();" class="md-icon-button md-warn add-team" aria-label="Add Round" flex="5">
+        <md-icon>delete</md-icon>
+    </md-button>
+    <md-progress-circular ng-if="$ctrl.isDeleted" class="md-primary add-round" flex="5"></md-progress-circular>
 </md-card>

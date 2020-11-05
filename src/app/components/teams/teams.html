@@ -1,15 +1,31 @@
 <!--Dominic Marques, Connor Kuse-->
-<md-card layout="row" layout-align="center" class="team-card teams-header" >
-    <h3 class="team-attr" flex="33" >
-        Team
+<md-card layout="column" layout-align="center" class="teams-outer">
+    <h3 class="team-attr" flex="35">
+        Teams
     </h3>
-    <md-divider></md-divider>
-    <h3 class="team-attr" flex="33">
-        Wins
-    </h3>
-    <md-divider></md-divider>
-    <h3 class="team-attr" flex="33">
-        Losses
-    </h3>
+    <md-card layout="row" layout-align="center" class="teams-header">
+        <team ng-repeat="team in $ctrl.teams" team="team" team-delete=$ctrl.teamDelete($event)></team>
+        <md-divider></md-divider>
+        <md-button ng-click="$ctrl.showAddTeam($event)" class="md-icon-button md-primary add-team" aria-label="Add Team" flex="5">
+            <md-icon>add</md-icon>
+        </md-button>
+    </md-card>
 </md-card>
-<team ng-repeat="team in $ctrl.teams" team="team"></team>
+
+<!-- Modal for adding a round -->
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="addTeamDialog">
+        <md-dialog layout-align="center">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">Add New Team</div>
+            </md-toolbar>
+            <form>
+                <md-input-container>
+                    <label>Team Name</label>
+                    <input type="text" ng-model="team.name" required />
+                </md-input-container>
+                <md-button ng-click="$ctrl.createTeam(team);" value="Submit" class="md-raised md-primary">Submit</md-button>
+            </form>
+        </md-dialog>
+    </div>
+</div>
