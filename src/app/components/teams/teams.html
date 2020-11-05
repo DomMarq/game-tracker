@@ -1,14 +1,14 @@
 <!--Dominic Marques, Connor Kuse-->
 <md-card layout="row" layout-align="center" class="team-card teams-header">
-    <h3 class="team-attr" flex="33" >
+    <h3 class="team-attr" flex="35">
         Team
     </h3>
     <md-divider></md-divider>
-    <h3 class="team-attr" flex="33">
+    <h3 class="team-attr" flex="30">
         Wins
     </h3>
     <md-divider></md-divider>
-    <h3 class="team-attr" flex="33">
+    <h3 class="team-attr" flex="30">
         Losses
     </h3>
     <md-divider></md-divider>
@@ -16,7 +16,6 @@
         <md-icon>add</md-icon>
     </md-button>
 </md-card>
-<team ng-repeat="team in $ctrl.teams" team="team"></team>
 
 <!-- Modal for adding a round -->
 <div style="visibility: hidden">
@@ -36,14 +35,4 @@
     </div>
 </div>
 
-<!--<md-card>
-    <md-card-content>
-        <form layout="row">
-            <md-input-container class="new-team-input">
-                <label>Team Name</label>
-                <input type="text" ng-model="team.name" required />
-            </md-input-container>
-            <md-button ng-click="$ctrl.addTeam(name);" value="Add Team" class="md-raised md-primary">Add Team</md-button>
-        </form>
-    </md-card-content>
-</md-card>-->
+<team ng-repeat="team in $ctrl.teams" team="team" team-delete=$ctrl.teamDelete($event)></team>

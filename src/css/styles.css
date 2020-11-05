@@ -60,3 +60,7 @@
     /* Remove top margin so the dropdown doesn't look so weird */
     margin-top: 0;
 }
+
+.add-team {
+    align-self: center;
+}

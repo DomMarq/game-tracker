@@ -2,7 +2,8 @@ const team = {
     templateUrl: './team.html',
     controller: 'TeamController',
     bindings: {
-        team: '<'
+        team: '<',
+        teamDelete: '&'
     }
 };
 

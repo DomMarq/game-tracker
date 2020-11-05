@@ -29,8 +29,8 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
             newTeam.save({
                 name: team.name,
                 users: team.users,
-                wins: team.wins,
-                losses: team.losses,
+                wins: 0,
+                losses: 0,
                 room: $ctrl.roomInfo
             })
             .then((newTeam) => {
@@ -43,6 +43,14 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
             })
         }
     }
+
+    this.teamDelete = function(event) {
+        TeamModel.getByRoom($ctrl.roomInfo)
+            .then(function(result) {
+                console.log($ctrl.teams);
+                $ctrl.teams = result;
+            });
+    };
 }
 
 TeamsController.$inject = ['$mdDialog', 'TeamModel', 'RoomModel'];
