@@ -12,6 +12,8 @@
         Losses: {{ $ctrl.team.losses }}
     </div>
     <md-divider></md-divider>
+    <users ng-repeat="user in $ctrl.users" user="user"></users>
+    <md-divider></md-divider>
     <md-button ng-if="!$ctrl.isDeleted" ng-click="$ctrl.deleteTeam();" class="md-icon-button md-warn add-team" aria-label="Add Round" flex="5">
         <md-icon>delete</md-icon>
     </md-button>

@@ -2,6 +2,10 @@ function TeamController(TeamModel) {
     const $ctrl = this;
     $ctrl.isDeleted = false;
 
+    this.$onInit = function() {
+        $ctrl.
+    }
+
     this.deleteTeam = function() {
         $ctrl.isDeleted = true;
         TeamModel.getById($ctrl.team.id)

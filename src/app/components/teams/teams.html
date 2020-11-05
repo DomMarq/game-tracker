@@ -3,7 +3,7 @@
     <h3 class="team-attr" flex="35">
         Teams
     </h3>
-    <md-card layout="row" layout-align="center" class="teams-header inner">
+    <md-card layout="row" layout-align="center" class="teams-header">
         <team ng-repeat="team in $ctrl.teams" team="team" team-delete=$ctrl.teamDelete($event)></team>
         <md-divider></md-divider>
         <md-button ng-click="$ctrl.showAddTeam($event)" class="md-icon-button md-primary add-team" aria-label="Add Team" flex="5">

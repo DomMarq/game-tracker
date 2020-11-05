@@ -5,5 +5,6 @@ angular
         'components.newRoom',
         'components.teams',
         'components.auth',
-        'components.profile'
+        'components.profile',
+        'components.users'
     ]);
