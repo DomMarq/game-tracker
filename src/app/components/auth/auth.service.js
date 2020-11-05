@@ -100,6 +100,11 @@ function AuthService() {
                     .setReadAccess(result);
             });
     };
+
+    this.isPublic = function(obj) {
+        return obj.getACL()
+            .getPublicReadAccess();
+    };
 }
 
 angular

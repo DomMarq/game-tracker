@@ -1,4 +1,4 @@
-function RoomController(TeamModel, RoundModel, AuthService) {
+function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.room = {
@@ -38,9 +38,27 @@ function RoomController(TeamModel, RoundModel, AuthService) {
         $ctrl.roomInfo.setACL(groupACL);
         $ctrl.roomInfo.save();
     };
+
+    $ctrl.showPerms = function(ev) {
+        $mdDialog.show({
+            contentElement: '#permDialog',
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application to prevent interaction outside of dialog
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true
+        });
+    };
+
+    $ctrl.addUser = function(user) {
+
+    };
 }
 
-RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService'];
+RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService',
+    '$mdDialog'
+];
 angular
     .module('components.room')
     .controller('RoomController', RoomController);
