@@ -82,6 +82,20 @@
     color: white;
 }
 
+.round-attr {
+    align-self: center;
+    text-align: center;
+}
+
+.round-card {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.rounds-header {
+    background-color: rgba(172, 172, 172, 0.5);
+}
+
 .roomSelect {
     /* Remove top margin so the dropdown doesn't look so weird */
     margin-top: 0;
@@ -89,5 +103,7 @@
 
 .add-team {
     color: white;
+  
+.add-round {
     align-self: center;
 }
