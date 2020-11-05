@@ -22,9 +22,9 @@
     - [ ] creation
     - [ ] stats
 - [ ] full team functionality
-    - [ ] team creation
+    - [x] team creation
     - [ ] editing
-    - [ ] deletion
+    - [x] deletion
 
 
 ## Dominic Stories

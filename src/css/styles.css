@@ -45,6 +45,28 @@
 .team-attr {
     align-self: center;
     text-align: center;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.teams-outer {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 0;
+    margin-bottom: 10px;
+    background-color: #424242;
+}
+
+.teams-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    background-color: #6D6D6D;
+
 }
 
 .team-card {
@@ -53,21 +75,11 @@
     align-items: center;
 
     padding: 0.5em;
-    background-color: #7E57C2;
+    background-color: #7E56C1;
 
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     color: white;
-}
-
-.teams-header {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-
-    margin-top: 0;
-    margin-bottom: 10px;
-    background-color: rgba(172, 172, 172, 0.5);
 }
 
 .roomSelect {
@@ -76,5 +88,6 @@
 }
 
 .add-team {
+    color: white;
     align-self: center;
 }

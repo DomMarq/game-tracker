@@ -28,7 +28,7 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
             var newTeam = TeamModel.New();
             newTeam.save({
                 name: team.name,
-                users: team.users,
+                users: [],
                 wins: 0,
                 losses: 0,
                 room: $ctrl.roomInfo
