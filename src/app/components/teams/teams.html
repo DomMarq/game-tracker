@@ -11,9 +11,54 @@
     <h3 class="team-attr" flex="33">
         Losses
     </h3>
+    <md-divider></md-divider>
+    <md-button ng-click="$ctrl.showAddTeam($event)" class="md-icon-button md-primary add-team" aria-label="Add Team" flex="5">
+        <md-icon>add</md-icon>
+    </md-button>
 </md-card>
 <team ng-repeat="team in $ctrl.teams" team="team"></team>
-<md-card>
+
+<!-- Modal for adding a round -->
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="addRoundDialog">
+        <md-dialog layout-align="center">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">Add New Round</div>
+            </md-toolbar>
+            <form>
+                <md-input-container class="round-attr">
+                    <label>Winning Team</label>
+                    <md-select ng-model="round.winner" required>
+                        <md-option ng-repeat="team in $ctrl.teams" ng-value="team">
+                            {{ team.name }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="round-attr">
+                    <label>Losing Team</label>
+                    <md-select ng-model="round.loser" required>
+                        <md-option ng-repeat="team in $ctrl.teams" ng-value="team" md-on-open="loadTeams()">
+                            {{ team.name }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Winner Score</label>
+                    <input type="number" ng-model="round.winnerScore" required />
+                </md-input-container>
+                <md-input-container>
+                    <label>Loser Score</label>
+                    <input type="number" ng-model="round.loserScore" required />
+                </md-input-container>
+                <md-button ng-click="$ctrl.createRound(round);" value="Submit" class="md-raised md-primary">Submit</md-button>
+            </form>
+            <p ng-if=$ctrl.formSubmission>{{ $ctrl.newRoomCreationMessage }}</p>
+
+        </md-dialog>
+    </div>
+</div>
+
+<!--<md-card>
     <md-card-content>
         <form layout="row">
             <md-input-container class="new-team-input">
@@ -23,4 +68,4 @@
             <md-button ng-click="$ctrl.addTeam(name);" value="Add Team" class="md-raised md-primary">Add Team</md-button>
         </form>
     </md-card-content>
-</md-card>
+</md-card>-->
