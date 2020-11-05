@@ -48,11 +48,25 @@
 }
 
 .team-card {
-    margin-top: 0;
-    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.5em;
+    background-color: #7E57C2;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
 
 .teams-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    margin-top: 0;
+    margin-bottom: 10px;
     background-color: rgba(172, 172, 172, 0.5);
 }
 

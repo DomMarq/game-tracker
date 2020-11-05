@@ -1,20 +1,15 @@
 <!--Dominic Marques, Connor Kuse-->
-<md-card layout="row" layout-align="center" class="team-card teams-header">
+<md-card layout="column" layout-align="center" class="teams-header">
     <h3 class="team-attr" flex="35">
-        Team
+        Teams
     </h3>
-    <md-divider></md-divider>
-    <h3 class="team-attr" flex="30">
-        Wins
-    </h3>
-    <md-divider></md-divider>
-    <h3 class="team-attr" flex="30">
-        Losses
-    </h3>
-    <md-divider></md-divider>
-    <md-button ng-click="$ctrl.showAddTeam($event)" class="md-icon-button md-primary add-team" aria-label="Add Team" flex="5">
-        <md-icon>add</md-icon>
-    </md-button>
+    <md-card layout="row" layout-align="center" class="teams-header">
+        <team ng-repeat="team in $ctrl.teams" team="team" team-delete=$ctrl.teamDelete($event)></team>
+        <md-divider></md-divider>
+        <md-button ng-click="$ctrl.showAddTeam($event)" class="md-icon-button md-primary add-team" aria-label="Add Team" flex="5">
+            <md-icon>add</md-icon>
+        </md-button>
+    </md-card>
 </md-card>
 
 <!-- Modal for adding a round -->
@@ -34,5 +29,3 @@
         </md-dialog>
     </div>
 </div>
-
-<team ng-repeat="team in $ctrl.teams" team="team" team-delete=$ctrl.teamDelete($event)></team>
