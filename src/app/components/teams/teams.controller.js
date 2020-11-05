@@ -34,7 +34,7 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
                 room: $ctrl.roomInfo
             })
             .then((newTeam) => {
-                $ctrl.teams.push(newTeam);
+                $ctrl.teams.unshift(newTeam);
                 $mdDialog.hide();
                 TeamModel.getByRoom($ctrl.roomInfo)
                     .then(function(result) {
