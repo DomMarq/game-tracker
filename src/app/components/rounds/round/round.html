@@ -1,0 +1,23 @@
+<!--Dominic Marques, Connor Kuse-->
+<md-card layout="row" layout-align="center" class="round-card">
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.updatedAt.toLocaleDateString(undefined, {weekday: 'short', month: 'numeric', day: 'numeric', year: '2-digit', hour: 'numeric', minute: 'numeric'}) }}
+    </div>
+    <md-divider></md-divider>
+    <div class="round-attr" flex="20">
+        {{ $ctrl.round.winnerScore }} - {{ $ctrl.round.loserScore }}
+    </div>
+    <md-divider></md-divider>
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.winner.name }}
+    </div>
+    <md-divider></md-divider>
+    <div class="round-attr" flex="25">
+        {{ $ctrl.round.loser.name }}
+    </div>
+    <md-divider></md-divider>
+    <md-button ng-if="!$ctrl.isDeleted" ng-click="$ctrl.deleteRound()" class="md-icon-button md-warn add-round" aria-label="Add Round" flex="5">
+        <md-icon>delete</md-icon>
+    </md-button>
+    <md-progress-circular ng-if="$ctrl.isDeleted" class="md-primary add-round" flex="5"></md-progress-circular>
+</md-card>
