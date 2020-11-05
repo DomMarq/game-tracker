@@ -13,3 +13,14 @@
     </h3>
 </md-card>
 <team ng-repeat="team in $ctrl.teams" team="team"></team>
+<md-card>
+    <md-card-content>
+        <form layout="row">
+            <md-input-container class="new-team-input">
+                <label>Team Name</label>
+                <input type="text" ng-model="team.name" required />
+            </md-input-container>
+            <md-button ng-click="$ctrl.addTeam(name);" value="Add Team" class="md-raised md-primary">Add Team</md-button>
+        </form>
+    </md-card-content>
+</md-card>
