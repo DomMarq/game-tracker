@@ -47,7 +47,6 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
     this.teamDelete = function(event) {
         TeamModel.getByRoom($ctrl.roomInfo)
             .then(function(result) {
-                console.log($ctrl.teams);
                 $ctrl.teams = result;
             });
     };
