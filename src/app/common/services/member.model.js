@@ -2,7 +2,8 @@ class MemberModel {
     constructor(Parse, RoomModel, TeamModel) {
         this.Parse = Parse;
         this.RoomModel = RoomModel;
-        this.name = 'User';
+        this.TeamModel = TeamModel;
+        this.name = 'Member';
         this.fields = [
             'name',
             'room',
@@ -37,17 +38,21 @@ class MemberModel {
             .get(id)
             .then(result => {
                 this.Parse.defineAttributes(result, this.fields);
+                this.Parse.defineAttributes(result.room,
+                    this.RoomModel.fields);
+                this.Parse.defineAttributes(result.team,
+                    this.TeamModel.fields);
                 this.data = result;
                 return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
     }
 
-    // get team by room
-    getByRoom(room) {
+    // get team members by team
+    getByTeam(team) {
         return new this.Parse.Query(this.New())
-            .include('room')
-            .equalTo('room', room)
+            .include('team')
+            .equalTo('team', team)
             .descending('createdAt')
             .find()
             .then(results => {
@@ -56,6 +61,8 @@ class MemberModel {
                         .fields);
                     this.Parse.defineAttributes(result.room,
                         this.RoomModel.fields);
+                    this.Parse.defineAttributes(result.team,
+                        this.TeamModel.fields);
                 });
                 this.collection = results;
                 return Promise.resolve(results);

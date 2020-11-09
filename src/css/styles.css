@@ -42,15 +42,6 @@
   height: 100%;
 }
 
-.team-attr {
-    align-self: center;
-    text-align: center;
-
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-}
-
 .teams-outer {
     display: flex;
     justify-content: center;
@@ -66,7 +57,19 @@
     justify-content: center;
 
     background-color: #6D6D6D;
+}
 
+.teams-title {
+    display: flex;
+    flex-flow: row;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
 
 .team-card {
@@ -75,11 +78,24 @@
     align-items: center;
 
     padding: 0.5em;
-    background-color: #7E56C1;
+    background-color: #A4A4A4;
 
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     color: white;
+}
+
+.team-attr {
+    display: flex;
+    flex-flow: row;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: black;
 }
 
 .round-attr {

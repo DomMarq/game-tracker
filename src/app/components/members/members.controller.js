@@ -1,4 +1,4 @@
-function MembersController($mdDialog, TeamModel, RoomModel) {
+function MembersController($mdDialog, MemberModel, TeamModel, RoomModel) {
     const $ctrl = this;
 
     $ctrl.$onInit = function() {
@@ -8,6 +8,6 @@ function MembersController($mdDialog, TeamModel, RoomModel) {
 
 }
 
-MembersController.$inject = ['$mdDialog', 'TeamModel', 'RoomModel'];
+MembersController.$inject = ['$mdDialog', 'MemberModel', 'TeamModel', 'RoomModel'];
 angular.module('components.members')
     .controller('MembersController', MembersController);

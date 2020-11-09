@@ -1,21 +1,42 @@
 <!--Dominic Marques, Connor Kuse-->
 <md-card layout="column" layout-align="center" class="team-card">
-    <div class="team-attr" flex="35">
+    <div class="team-attr">
         {{ $ctrl.team.name }}
+        <md-button ng-click="$ctrl.showTeamEdit($event);" class="md-icon-button md-primary edit-team" aria-label="Edit Team Name">
+            <md-icon>create</md-icon>
+        </md-button>
     </div>
     <md-divider></md-divider>
-    <div class="team-attr" flex="30">
+    <div class="team-attr">
         Wins: {{ $ctrl.team.wins }}
     </div>
     <md-divider></md-divider>
-    <div class="team-attr" flex="30">
+    <div class="team-attr">
         Losses: {{ $ctrl.team.losses }}
     </div>
     <md-divider></md-divider>
     <users ng-repeat="user in $ctrl.users" user="user"></users>
     <md-divider></md-divider>
-    <md-button ng-if="!$ctrl.isDeleted" ng-click="$ctrl.deleteTeam();" class="md-icon-button md-warn add-team" aria-label="Add Round" flex="5">
+    <md-button ng-if="!$ctrl.isDeleted" ng-click="$ctrl.deleteTeam();" class="md-icon-button md-warn team-attr delete-team" aria-label="Delete Team">
         <md-icon>delete</md-icon>
     </md-button>
     <md-progress-circular ng-if="$ctrl.isDeleted" class="md-primary add-round" flex="5"></md-progress-circular>
 </md-card>
+
+<!-- Modal for adding a round -->
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="editTeamDialog">
+        <md-dialog layout-align="center">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">Edit Team Name</div>
+            </md-toolbar>
+            <form>
+                <md-input-container>
+                    <label>New team name</label>
+                    <input type="text" ng-model="name" required />
+                </md-input-container>
+                <md-button ng-click="$ctrl.editTeamName(name);" value="Submit" class="md-raised md-primary">Submit</md-button>
+            </form>
+        </md-dialog>
+    </div>
+</div>
