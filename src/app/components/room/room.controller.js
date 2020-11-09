@@ -4,7 +4,8 @@ function RoomController(TeamModel, RoundModel) {
         $ctrl.room = {
             name: "",
             type: "",
-            teams: {}
+            teams: {},
+            members: []
         };
         $ctrl.roomLoaded = false;
         TeamModel.getByRoom($ctrl.roomInfo)

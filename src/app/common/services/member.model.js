@@ -1,4 +1,4 @@
-class UserModel {
+class MemberModel {
     constructor(Parse, RoomModel, TeamModel) {
         this.Parse = Parse;
         this.RoomModel = RoomModel;
@@ -67,4 +67,4 @@ class UserModel {
 
 angular
     .module('common')
-    .service('UserModel', UserModel);
+    .service('MemberModel', MemberModel);

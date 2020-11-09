@@ -6,6 +6,6 @@ angular
         'components.teams',
         'components.auth',
         'components.profile',
-        'components.users',
+        'components.members',
         'components.rounds'
     ]);
