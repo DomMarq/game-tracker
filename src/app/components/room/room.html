@@ -8,7 +8,7 @@
     <br>
     <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
 
-    <md-button ng-click="$ctrl.showPerms($event);" class="md-raised md-primary">Open Permissions</md-button>
+    <md-button ng-if="$ctrl.isAdmin" ng-click="$ctrl.showPerms($event);" class="md-raised md-primary">Open Permissions</md-button>
 </div>
 
 
@@ -28,13 +28,12 @@
                         <span class="md-headline">Add user to room</span>
                     </md-card-title>
                     <md-card-content>
-                        <form>
+                        <form layout="column">
                             <md-input-container>
-                                <label>User's Email</label>
-                                <input type="email" ng-model="user.email" required>
+                                <label>User's ID Code</label>
+                                <input type="text" ng-model="user.id" required>
                             </md-input-container>
-                            <md-button ng-click="$ctrl.addUser(user);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
-
+                            <md-button ng-click="$ctrl.addUser(user, false);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
                         </form>
                     </md-card-content>
                 </md-card>
@@ -44,11 +43,12 @@
                         <span class="md-headline">Add user as Admin</span>
                     </md-card-title>
                     <md-card-content>
-                        <form>
+                        <form layout="column">
                             <md-input-container>
-                                <label>User's Email</label>
-                                <input type="email" ng-model="user.email" required>
+                                <label>User's ID Code</label>
+                                <input type="text" ng-model="user.id" required>
                             </md-input-container>
+                            <md-button ng-click="$ctrl.addUser(user, true);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
                         </form>
                     </md-card-content>
                 </md-card>
