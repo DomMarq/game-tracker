@@ -29,10 +29,10 @@
 
 ## Dominic Stories
 - [ ] QR Code generator  (user story)
-- [ ] Whitelist room access (private rooms)
+- [x] Whitelist room access (private rooms)
     - [ ] kick user
-    - [ ] Admin permissions
-        - [ ] transfer permissions / handle admin leaving
+    - [x] Admin permissions
+        - [x] transfer permissions / handle admin leaving
 - [ ] Add custom data columns / stats
 
 
