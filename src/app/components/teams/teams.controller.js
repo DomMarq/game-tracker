@@ -36,6 +36,7 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
             .then((newTeam) => {
                 $ctrl.teams.unshift(newTeam);
                 $mdDialog.hide();
+                console.log(newTeam);
                 TeamModel.getByRoom($ctrl.roomInfo)
                     .then(function(result) {
                         $ctrl.teams = result;

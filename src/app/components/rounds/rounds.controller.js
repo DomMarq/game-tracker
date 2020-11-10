@@ -1,9 +1,7 @@
 function RoundsController($mdDialog, RoundModel, RoomModel) {
     var $ctrl = this;
-    console.log($ctrl.roomInfo);
 
     $ctrl.$onInit = function() {
-        console.log(RoomModel.data);
         $ctrl.roomInfo = RoomModel.data;
     }
 

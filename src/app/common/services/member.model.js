@@ -8,7 +8,8 @@ class MemberModel {
             'name',
             'room',
             'team',
-            'isManager'
+            'isManager',
+            'user'
         ];
         this.data = {}; // hold singular result of queries
         this.collection = []; // hold array results of queries
