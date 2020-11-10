@@ -2,8 +2,11 @@
 <!--View the information about a room - games, team records, etc.-->
 <md-progress-linear md-mode="query" ng-if="!$ctrl.loaded"></md-progress-linear>
 <div ng-if="$ctrl.loaded">
-    <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
-    <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
+    <md-card class="room-header">
+        <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
+        <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
+        <h1>Room ID: {{ $ctrl.roomInfo.id }}</h1>
+    </md-card>
     <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams" roomInfo="$ctrl.roomInfo"></rounds>
     <br>
     <teams ng-if="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
