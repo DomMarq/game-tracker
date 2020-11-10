@@ -5,6 +5,13 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
     $ctrl.$onInit = function() {
         console.log(RoomModel.data);
         $ctrl.roomInfo = RoomModel.data;
+        $ctrl.dataKeys = Object.keys($ctrl.roomInfo.customData);
+        $ctrl.columns = 4 + $ctrl.dataKeys.length;
+        $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
+        $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
+        $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys.length);
+        console.log($ctrl.flexSize);
+        console.log($ctrl.dataKeys);
     }
 
     this.showAddRound = function(ev) {
@@ -32,16 +39,22 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
             $ctrl.formSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
-            // var roundJson = angular.toJson(round);
-            // console.log(roundJson);
+            var roundJson = angular.toJson(round);
+            console.log(roundJson);
 
             var newRound = RoundModel.New();
+            for (let [key, value] of Object.entries(round.customData)) {
+                if (!value) {
+                    round.customData = '-';
+                }
+            }
             newRound.save({
                     winner: round.winner,
                     loser: round.loser,
                     winnerScore: round.winnerScore,
                     loserScore: round.loserScore,
-                    room: $ctrl.roomInfo
+                    room: $ctrl.roomInfo,
+                    customData: round.customData
                 })
                 .then((newRound) => {
                     $ctrl.rounds.unshift(newRound);
@@ -52,6 +65,7 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
                         });
                 });
         }
+        round = {};
     };
 
     this.roundDelete = function(event) {

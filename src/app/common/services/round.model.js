@@ -11,6 +11,7 @@ class RoundModel {
             'loserScore',
             'loser',
             'room',
+            'customData'
         ];
         this.data = {}; // hold singular result of queries
         this.collection = []; // hold array results of queries
@@ -30,6 +31,7 @@ class RoundModel {
             parseObject.loser = new this.Parse.Object(this.TeamModel.name);
             this.Parse.defineAttributes(parseObject.loser, this.TeamModel
                 .fields);
+            parseObject.customData = {};
             return parseObject;
         } else { // Exposing Round Parse Object Attributes (getters and setters)
             this.Parse.defineAttributes(obj, this.fields);

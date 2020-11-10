@@ -5,8 +5,9 @@ class RoomModel {
         this.fields = [
             'name',
             'gameType',
-            'users',
-            'manager'
+            'customData'
+            // 'users',
+            // 'manager',
         ];
         this.data = {}; // hold singular result of queries
         this.collection = []; // hold array results of queries
@@ -17,6 +18,7 @@ class RoomModel {
         if (angular.isUndefined(obj)) {
             const parseObject = new this.Parse.Object(this.name);
             this.Parse.defineAttributes(parseObject, this.fields);
+            parseObject.customData = {};
             return parseObject;
         } else { // Exposing Room Parse Object Attributes (getters and setters)
             this.Parse.defineAttributes(obj, this.fields);
@@ -80,5 +82,5 @@ class RoomModel {
 }
 
 angular
-  .module('common')
-  .service('RoomModel', RoomModel);
+    .module('common')
+    .service('RoomModel', RoomModel);

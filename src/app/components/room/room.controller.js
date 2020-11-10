@@ -53,6 +53,9 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
         });
     };
 
+    $ctrl.addCustomData = function(data) {
+        $ctrl.roomInfo.customData[data.key] = data.defaultValue;
+    };
 }
 
 RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService',

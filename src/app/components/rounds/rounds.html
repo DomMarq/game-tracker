@@ -1,22 +1,31 @@
 <!--Dominic Marques, Connor Kuse-->
 <md-card layout="row" layout-align="center" class="round-card rounds-header">
-    <h3 class="round-attr" flex="25">
+    <h3 class="round-attr" flex="$ctrl.flexSize">
         Round Completed
     </h3>
     <md-divider></md-divider>
-    <h3 class="round-attr" flex="20">
+    <h3 class="round-attr" flex="$ctrl.flexSize">
         Score
     </h3>
     <md-divider></md-divider>
-    <h3 class="round-attr" flex="25">
+    <h3 class="round-attr" flex="$ctrl.flexSize">
         Winner
     </h3>
     <md-divider></md-divider>
-    <h3 class="round-attr" flex="25">
+    <h3 class="round-attr" flex="$ctrl.flexSize">
         Loser
     </h3>
     <md-divider></md-divider>
-    <md-button ng-click="$ctrl.showAddRound($event)" class="md-icon-button md-primary add-round" aria-label="Add Round" flex="5">
+    <div flex="$ctrl.customFlexSize" layout="row">
+        <div ng-repeat="data in $ctrl.dataKeys" layout="row" layout-align="stretch" flex="100">
+            <h3 class="round-attr" flex="100">
+                {{ data }}
+            </h3>
+            <md-divider></md-divider>
+        </div>
+    </div>
+    <!-- <md-divider ng-if="$ctrl.dataKeys.length"></md-divider> -->
+    <md-button ng-click="$ctrl.showAddRound($event)" class="md-icon-button md-primary add-round" aria-label="Add Round" flex="3">
         <md-icon>add</md-icon>
     </md-button>
 </md-card>
@@ -53,6 +62,10 @@
                 <md-input-container>
                     <label>Loser Score</label>
                     <input type="number" ng-model="round.loserScore" required />
+                </md-input-container>
+                <md-input-container ng-repeat="data in $ctrl.dataKeys">
+                    <label>{{ data }}</label>
+                    <input type="text" ng-model="round.customData[data]" required />
                 </md-input-container>
                 <md-button ng-click="$ctrl.createRound(round);" value="Submit" class="md-raised md-primary">Submit</md-button>
             </form>
