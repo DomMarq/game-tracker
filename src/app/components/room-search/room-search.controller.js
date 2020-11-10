@@ -17,50 +17,55 @@ function RoomSearchController(AuthService, RoomModel, MemberModel, $stateProvide
             $ctrl.roomSearchFormSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
-
             RoomModel.getById(code)
-                .then(function(result) {
+                .then(function(room) {
                     // check if user is already a member of the room
-                    console.log("Result: " + result);
-                    console.log(result);
-                    console.log(result.members);
-                    for (var member of result.members) {
-                        console.log("Member User");
-                        console.log(member.user);
-                        console.log("Ctrl User");
-                        console.log($ctrl.user);
-                        if (member.user == $ctrl.user) {
-                            $state.go('room', {
-                                id: code
-                            });
-                            break; // maybe not necessary
-                        }
+                    for (var member of room.members) {
+                        MemberModel.getById(member.id)
+                            .then(function(member) {
+                                console.log("Member");
+                                console.log(member);
+                                console.log("Member User");
+                                console.log(member.user.id);
+                                console.log("Control User");
+                                console.log($ctrl.user.id);
+                                if (member.user.id == $ctrl.user.id) {
+                                    $state.go('room', {
+                                        id: code
+                                    });
+                                    console.log("Gotcha!");
+                                    return;
+                                }
+                            })
                     }
+                    console.log("No sir");
+                });
 
-                    // user not found yet, create a new member and add them to the room
-                    var newMember = MemberModel.New();
-                    newMember.save({
-                        name: $ctrl.user.name,
-                        isManager: false,
-                        user: $ctrl.user
-                    })
-                    .then(function(newMember) {
-                        result.members.push(newMember);
-                        result.set('members', result.members);
-                        $state.go('room', {
-                            id: code
-                        });
-                    })
-                })/*.catch(function() {
-                    console.log("Invalid code input.");
-                    $ctrl.roomSearchJoinMessage =
-                        "No room with this code was found. Please try again.";
-                    $ctrl.roomSearchFormSubmission = true;
-                    $ctrl.isSubmitted = false;
-                })*/
+            // user not found yet, create a new member and add them to the room
+            // var newMember = MemberModel.New();
+            // newMember.save({
+            //     name: $ctrl.user.name,
+            //     room: room,
+            //     team: null,
+            //     isManager: false,
+            //     user: $ctrl.user
+            // })
+            // .then(function(newMember) {
+            //     room.members.push(newMember);
+            //     room.set('members', room.members);
+            //     $state.go('room', {
+            //         id: code
+            //     });
+            // })
         }
+                // .catch(function(error) {
+                //     console.log("Invalid code input.");
+                //     $ctrl.roomSearchJoinMessage =
+                //         "No room with this code was found. Please try again.";
+                //     $ctrl.roomSearchFormSubmission = true;
+                //     $ctrl.isSubmitted = false;
+                // })
     }
-
 }
 
 RoomSearchController.$inject = ['AuthService', 'RoomModel', 'MemberModel', '$window', '$state'];
