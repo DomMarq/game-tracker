@@ -23,7 +23,7 @@
     - [ ] stats
 - [ ] full team functionality
     - [x] team creation
-    - [ ] editing
+    - [x] editing
     - [x] deletion
 
 
@@ -38,12 +38,12 @@
 
 ## Connor Stories
 - [ ] Profile customization (user story)
-- [ ] room finder / joiner
-    - [ ] invitations
-- [ ] Add username to navbar (differentiate logged in experience)
+- [x] room finder / joiner
+- [x] Add username to navbar (differentiate logged in experience)
 - [ ] Profile stats
 
 
 ## Stretch Goals
+- [ ] invitations
 - [ ] Dark mode (user story *** OPTIONAL ***)
 - [ ] Import/Export to csv
