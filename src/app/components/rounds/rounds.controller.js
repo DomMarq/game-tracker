@@ -1,17 +1,15 @@
 function RoundsController($mdDialog, RoundModel, RoomModel) {
     var $ctrl = this;
-    console.log($ctrl.roomInfo);
+    // console.log($ctrl.roomInfo);
 
     $ctrl.$onInit = function() {
-        console.log(RoomModel.data);
+        // console.log(RoomModel.data);
         $ctrl.roomInfo = RoomModel.data;
         $ctrl.dataKeys = Object.keys($ctrl.roomInfo.customData);
         $ctrl.columns = 4 + $ctrl.dataKeys.length;
         $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
         $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
         $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys.length);
-        console.log($ctrl.flexSize);
-        console.log($ctrl.dataKeys);
     }
 
     this.showAddRound = function(ev) {
@@ -39,8 +37,8 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
             $ctrl.formSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
-            var roundJson = angular.toJson(round);
-            console.log(roundJson);
+            // var roundJson = angular.toJson(round);
+            // console.log(roundJson);
 
             var newRound = RoundModel.New();
             for (let [key, value] of Object.entries(round.customData)) {

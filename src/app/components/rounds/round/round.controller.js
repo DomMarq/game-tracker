@@ -3,7 +3,7 @@ function RoundController(RoundModel) {
     $ctrl.isDeleted = false;
 
     $ctrl.$onInit = function() {
-        console.log($ctrl.round);
+        // console.log($ctrl.round);
         $ctrl.dataKeys = Object.keys($ctrl.round.customData);
         $ctrl.columns = 4 + $ctrl.dataKeys.length;
         $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
