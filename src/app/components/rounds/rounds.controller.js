@@ -30,8 +30,6 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
             $ctrl.formSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
-            // var roundJson = angular.toJson(round);
-            // console.log(roundJson);
 
             var newRound = RoundModel.New();
             newRound.save({

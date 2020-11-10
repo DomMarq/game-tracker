@@ -71,6 +71,29 @@ class MemberModel {
             .catch(error => Promise.reject(error));
     }
     // TODO: Add an ability to get teams given users
+
+    getByUserandRoom(user, room) {
+        return new this.Parse.Query(this.New())
+            .include('room')
+            .include('user')
+            .equalTo('room', room)
+            .equalTo('user', user)
+            .descending('createdAt')
+            .find()
+            .then(results => {
+                results.forEach(result => {
+                    this.Parse.defineAttributes(result, this
+                        .fields);
+                    this.Parse.defineAttributes(result.room,
+                        this.RoomModel.fields);
+                    this.Parse.defineAttributes(result.team,
+                        this.TeamModel.fields);
+                });
+                this.collection = results;
+                return Promise.resolve(results);
+            })
+            .catch(error => Promise.reject(error));
+    }
 }
 
 angular
