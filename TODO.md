@@ -33,7 +33,7 @@
     - [ ] kick user
     - [ ] Admin permissions
         - [ ] transfer permissions / handle admin leaving
-- [ ] Add custom data columns / stats
+- [x] Add custom data columns / stats
 
 
 ## Connor Stories
