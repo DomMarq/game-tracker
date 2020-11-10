@@ -3,7 +3,7 @@ function AuthFormController(AuthService, $state) {
 
     $ctrl.$onInit = function() {
         if (AuthService.isAuthenticated()) {
-          $state.go('home');
+            $state.go('home');
         }
         $ctrl.isRegister = ($ctrl.button === 'Sign Up & Create Account') ?
             true : false;

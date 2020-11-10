@@ -1,5 +1,5 @@
 function NavbarController(AuthService) {
-  /*
+
   const $ctrl = this;
   $ctrl.$onInit = function() {
       $ctrl.username = '';
@@ -16,7 +16,8 @@ function NavbarController(AuthService) {
       } else {
         $ctrl.username = 'Not logged in';
       }
-  }*/
+  }
 };
 
+NavbarController.$inject = ['AuthService'];
 angular.module('common').controller('NavbarController', NavbarController);

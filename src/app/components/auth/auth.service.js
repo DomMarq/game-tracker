@@ -22,6 +22,7 @@ function AuthService() {
         Parse.User.logIn(user.email, user.password)
             .then((user) => {
                 // Do stuff after successful login
+                location.reload();
                 console.log('Logged in user', user);
             })
             .catch(error => {
@@ -48,6 +49,7 @@ function AuthService() {
         Parse.User.logOut()
             .then(() => {
                 var currentUser = Parse.User.current();
+                location.reload();
             });
     };
 
