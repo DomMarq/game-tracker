@@ -21,10 +21,15 @@ function RoomSearchController(AuthService, RoomModel, $stateProvider, $state) {
             RoomModel.getById(code)
                 .then(function(result) {
                     console.log(result);
-                    // add member
-                    $state.go('room', {
-                        id: code
-                    });
+                    var members = result.get('members');
+                    console.log("Members: " + members);
+                    members.push($ctrl.user);
+                    result.set('members', members)
+                        .then((response) => {
+                            $state.go('room', {
+                                id: code
+                            });
+                        })
                 }).catch(function() {
                     console.log("Invalid code input.");
                     $ctrl.roomSearchJoinMessage =

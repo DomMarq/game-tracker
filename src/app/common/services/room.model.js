@@ -5,7 +5,9 @@ class RoomModel {
         this.fields = [
             'name',
             'gameType',
-            'users',
+            'rounds',
+            'members',
+            'teams',
             'manager'
         ];
         this.data = {}; // hold singular result of queries
@@ -49,7 +51,7 @@ class RoomModel {
                     this.Parse.defineAttributes(result, this
                         .fields);
                     this.Parse.defineAttributes(result.manager,
-                        this.UserModel.fields);
+                        this.MemberModel.fields);
                 });
                 this.collection = results;
                 return Promise.resolve(results);
@@ -71,7 +73,7 @@ class RoomModel {
                     this.Parse.defineAttributes(result, this
                         .fields);
                     this.Parse.defineAttributes(result.user,
-                        this.UserModel.fields);
+                        this.MemberModel.fields);
                 })
                 return Promise.resolve(results);
             })

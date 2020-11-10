@@ -1,7 +1,6 @@
 function ProfileController(AuthService, $state) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
-
         if (!AuthService.isAuthenticated()) {
           $state.go('auth.login');
         }
