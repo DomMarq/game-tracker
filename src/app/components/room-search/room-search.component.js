@@ -1,4 +1,4 @@
-const newRoom = {
+const roomSearch = {
     templateUrl: './room-search.html',
     controller: 'RoomSearchController'
 };
