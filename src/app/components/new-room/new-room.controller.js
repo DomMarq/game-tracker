@@ -22,34 +22,36 @@ function NewRoomController(AuthService, RoomModel, MemberModel, $stateProvider, 
         } else {
             $ctrl.isSubmitted = true;
 
-            var creator = MemberModel.New();
-            let id = '';
-            creator.save({
-                name: $ctrl.user.name,
-                isManager: true,
-                user: $ctrl.user
+            var newRoom = RoomModel.New();
+            newRoom.save({
+                name: room.name,
+                gameType: room.type,
+                rounds: [],
+                members: [],
+                teams: [],
+                manager: null
             })
-            .then((creator) => {
-                MemberModel.getById(creator.id)
-                    .then(function(result) {
-                        var newRoom = RoomModel.New();
-                        newRoom.save({
-                            name: room.name,
-                            gameType: room.type,
-                            rounds: [],
-                            members: [result],
-                            teams: [],
-                            manager: result
-                        })
-                        .then((newRoom) => {
-                            console.log(newRoom);
-                            $state.go('room', {
-                                id: newRoom.id
-                            });
+            .then(function(newRoom) {
+                var manager = MemberModel.New();
+                manager.save({
+                    name: $ctrl.user.name,
+                    room: newRoom,
+                    team: null,
+                    isManager: true,
+                    user: $ctrl.user
+                })
+                .then(function(manager) {
+                    newRoom.save({
+                        members: [manager],
+                        manager: manager
+                    })
+                    .then(function(response) {
+                        $state.go('room', {
+                            id: newRoom.id
                         });
                     })
-            });
-
+                })
+            })
         }
 
     };

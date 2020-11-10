@@ -3,8 +3,8 @@
 <md-progress-linear md-mode="query" ng-if="!$ctrl.loaded"></md-progress-linear>
 <div ng-if="$ctrl.loaded">
     <md-card class="room-header">
-        <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
         <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
+        <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
         <h1>Room ID: {{ $ctrl.roomInfo.id }}</h1>
         <!--<h1>Room Members: {{ $ctrl.roomInfo.members }}</h1>-->
         <members ng-if="$ctrl.membersLoaded" members="$ctrl.members"></members>
