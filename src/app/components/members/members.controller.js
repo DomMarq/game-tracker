@@ -2,8 +2,7 @@ function MembersController($mdDialog, MemberModel, TeamModel, RoomModel) {
     const $ctrl = this;
 
     $ctrl.$onInit = function() {
-        console.log(RoomModel.data);
-        $ctrl.roomInfo = RoomModel.data;
+        console.log($ctrl.members);
     }
 
 }

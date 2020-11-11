@@ -1,7 +1,13 @@
-function TeamsController($mdDialog, TeamModel, RoomModel) {
+function TeamsController($mdDialog, TeamModel, RoomModel, MemberModel) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.roomInfo = RoomModel.data;
+        $ctrl.membersLoaded = false;
+        MemberModel.getByRoomAndTeam($ctrl.roomInfo, null)
+            .then(function(members) {
+                $ctrl.spectators = members;
+                $ctrl.membersLoaded = true;
+            })
     }
 
     this.showAddTeam = function(ev) {
@@ -57,6 +63,6 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
     };
 }
 
-TeamsController.$inject = ['$mdDialog', 'TeamModel', 'RoomModel'];
+TeamsController.$inject = ['$mdDialog', 'TeamModel', 'RoomModel', 'MemberModel'];
 angular.module('components.teams')
     .controller('TeamsController', TeamsController);

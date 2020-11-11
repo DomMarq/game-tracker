@@ -94,6 +94,29 @@ class MemberModel {
             })
             .catch(error => Promise.reject(error));
     }
+
+    getByRoomAndTeam(room, team) {
+        return new this.Parse.Query(this.New())
+            .include('room')
+            .include('team')
+            .equalTo('room', room)
+            .equalTo('team', team)
+            .descending('createdAt')
+            .find()
+            .then(results => {
+                results.forEach(result => {
+                    this.Parse.defineAttributes(result, this
+                        .fields);
+                    this.Parse.defineAttributes(result.room,
+                        this.RoomModel.fields);
+                    this.Parse.defineAttributes(result.team,
+                        this.TeamModel.fields);
+                });
+                this.collection = results;
+                return Promise.resolve(results);
+            })
+            .catch(error => Promise.reject(error));
+    }
 }
 
 angular

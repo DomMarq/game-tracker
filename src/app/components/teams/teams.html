@@ -9,6 +9,16 @@
         <md-button ng-click="$ctrl.showAddTeam($event)" class="md-icon-button md-primary add-team" aria-label="Add Team">
             <md-icon>add</md-icon>
         </md-button>
+        <md-divider></md-divider>
+        <!-- Spectator Team Card -->
+        <md-card layout="column" layout-align="center" class="team-card">
+            <div class="team-attr">
+                Spectators
+            </div>
+            <md-divider></md-divider>
+            <members ng-if="$ctrl.membersLoaded" members="$ctrl.spectators"></members>
+            <md-divider></md-divider>
+        </md-card>
     </md-card>
 </md-card>
 

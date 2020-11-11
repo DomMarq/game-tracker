@@ -2,8 +2,7 @@ const members = {
     templateUrl: './members.html',
     controller: 'MembersController',
     bindings: {
-        members: '<',
-        roomInfo: '<'
+        members: '<'
     }
 };
 
