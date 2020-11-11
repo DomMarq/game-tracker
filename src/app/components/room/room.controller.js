@@ -1,10 +1,12 @@
-function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
+function RoomController(TeamModel, RoundModel, AuthService, $location,
+    $mdDialog) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.room = {
             name: "",
             type: "",
-            teams: {}
+            teams: {},
+            members: []
         };
         $ctrl.roomLoaded = false;
         TeamModel.getByRoom($ctrl.roomInfo)
@@ -19,6 +21,10 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
             });
         $ctrl.loaded = true;
         $ctrl.isAdmin = AuthService.isAdmin($ctrl.roomInfo);
+        if ($ctrl.isAdmin) $ctrl.users = Object.keys($ctrl.roomInfo
+            .getACL()
+            .permissionsById);
+        if ($ctrl.users) console.log($ctrl.users);
     };
 
     $ctrl.addUser = function(user, admin) {
@@ -29,16 +35,18 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
         console.log(groupACL);
         $ctrl.roomInfo.setACL(groupACL);
         $ctrl.roomInfo.save();
+        $mdDialog.hide();
     };
 
     $ctrl.kickUser = function(user) {
         // TODO: Add a check to make sure that [user] is not the admin
         var groupACL = $ctrl.roomInfo.getACL();
-        groupACL.setReadAccess(user.id, false);
-        groupACL.setWriteAccess(user.id, false);
+        groupACL.setReadAccess(user, false);
+        groupACL.setWriteAccess(user, false);
 
         $ctrl.roomInfo.setACL(groupACL);
         $ctrl.roomInfo.save();
+        $mdDialog.hide();
     };
 
     $ctrl.showPerms = function(ev) {
@@ -51,7 +59,9 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
             clickOutsideToClose: true,
             fullscreen: true
         });
+
     };
+
 
     $ctrl.showCustomData = function(ev) {
         $mdDialog.show({
@@ -65,6 +75,20 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
         });
     };
 
+    this.showQR = function(ev) {
+        $mdDialog.show({
+            contentElement: '#qrDialog',
+
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application to prevent interaction outside of dialog
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true
+        });
+        $ctrl.url = $location.absUrl();
+    };
+
     $ctrl.addCustomData = function(data) {
         $ctrl.roomInfo.customData[data.key] = data.value;
         $ctrl.roomInfo.save();
@@ -76,11 +100,10 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
             $ctrl.rounds[i].save();
         };
         $mdDialog.cancel();
-
     };
 }
 
-RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService',
+RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService', '$location',
     '$mdDialog'
 ];
 angular

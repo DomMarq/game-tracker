@@ -1,0 +1,13 @@
+<!--Dominic Marques, Connor Kuse-->
+<md-card layout="column" layout-align="center" class="teams-outer">
+    <h3 class="teams-title">
+        Members
+    </h3>
+    <md-card layout="column" layout-align="center" class="teams-header">
+        <member ng-repeat="member in $ctrl.members" member="member" member-delete=$ctrl.memberDelete($event)></member>
+        <md-divider></md-divider>
+        <md-button ng-click="$ctrl.showJoinTeam($event)" class="md-icon-button md-primary join-team" aria-label="Join Team">
+            <md-icon>add</md-icon>
+        </md-button>
+    </md-card>
+</md-card>

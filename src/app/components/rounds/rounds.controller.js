@@ -1,26 +1,23 @@
 function RoundsController($mdDialog, RoundModel, RoomModel) {
     var $ctrl = this;
-    // console.log($ctrl.room);
 
     $ctrl.$onInit = function() {
         // console.log(RoomModel.data);
         $ctrl.dataKeys = Object.keys($ctrl.room.customData);
         $ctrl.columns = 4 + $ctrl.dataKeys.length;
         $ctrl.flexSize = Math.floor(97 / ($ctrl.columns));
-        console.log($ctrl.flexSize);
-        console.log($ctrl.columns);
         $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
         $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys.length);
+
     }
 
-    // $ctrl.$doCheck = function() {
-    //     $ctrl.dataKeys = Object.keys($ctrl.room.customData);
-    //     $ctrl.columns = 4 + $ctrl.dataKeys.length;
-    //     $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
-    //     $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
-    //     $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys
-    //         .length);
-    // };
+    $ctrl.$doCheck = function() {
+        $ctrl.dataKeys = Object.keys($ctrl.room.customData);
+        $ctrl.columns = 4 + $ctrl.dataKeys.length;
+        $ctrl.flexSize = Math.floor(97 / ($ctrl.columns));
+        $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
+        $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys.length);
+    };
 
     this.showAddRound = function(ev) {
         $mdDialog.show({
@@ -43,7 +40,7 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
         } else if (round.winnerScore < round.loserScore || round.loser ===
             round.winner) {
             $ctrl.creationMessage =
-                "There was an issue. Please try again.";
+                "Invalid input. Please try again.";
             $ctrl.formSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
