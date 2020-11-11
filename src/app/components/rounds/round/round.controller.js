@@ -6,7 +6,7 @@ function RoundController(RoundModel) {
         // console.log($ctrl.round);
         $ctrl.dataKeys = Object.keys($ctrl.round.customData);
         $ctrl.columns = 4 + $ctrl.dataKeys.length;
-        $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
+        $ctrl.flexSize = Math.floor(97 / ($ctrl.columns));
         $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
         $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys.length);
     };

@@ -53,8 +53,30 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
         });
     };
 
+    $ctrl.showCustomData = function(ev) {
+        $mdDialog.show({
+            contentElement: '#customDataDialog',
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application to prevent interaction outside of dialog
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true
+        });
+    };
+
     $ctrl.addCustomData = function(data) {
-        $ctrl.roomInfo.customData[data.key] = data.defaultValue;
+        $ctrl.roomInfo.customData[data.key] = data.value;
+        $ctrl.roomInfo.save();
+        console.log($ctrl.rounds);
+        for (var i = 0; i < $ctrl.rounds.length; i++) {
+            // var round = $ctrl.rounds[i];
+            $ctrl.rounds[i].customData[data.key] = data
+                .value;
+            $ctrl.rounds[i].save();
+        };
+        $mdDialog.cancel();
+
     };
 }
 

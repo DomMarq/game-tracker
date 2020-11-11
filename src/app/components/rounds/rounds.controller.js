@@ -1,16 +1,26 @@
 function RoundsController($mdDialog, RoundModel, RoomModel) {
     var $ctrl = this;
-    // console.log($ctrl.roomInfo);
+    // console.log($ctrl.room);
 
     $ctrl.$onInit = function() {
         // console.log(RoomModel.data);
-        $ctrl.roomInfo = RoomModel.data;
-        $ctrl.dataKeys = Object.keys($ctrl.roomInfo.customData);
+        $ctrl.dataKeys = Object.keys($ctrl.room.customData);
         $ctrl.columns = 4 + $ctrl.dataKeys.length;
-        $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
+        $ctrl.flexSize = Math.floor(97 / ($ctrl.columns));
+        console.log($ctrl.flexSize);
+        console.log($ctrl.columns);
         $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
         $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys.length);
     }
+
+    // $ctrl.$doCheck = function() {
+    //     $ctrl.dataKeys = Object.keys($ctrl.room.customData);
+    //     $ctrl.columns = 4 + $ctrl.dataKeys.length;
+    //     $ctrl.flexSize = Math.floor(97 / $ctrl.columns);
+    //     $ctrl.customFlexSize = $ctrl.flexSize * $ctrl.dataKeys.length;
+    //     $ctrl.innerCustomFlexSize = Math.floor(100 / $ctrl.dataKeys
+    //         .length);
+    // };
 
     this.showAddRound = function(ev) {
         $mdDialog.show({
@@ -51,13 +61,13 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
                     loser: round.loser,
                     winnerScore: round.winnerScore,
                     loserScore: round.loserScore,
-                    room: $ctrl.roomInfo,
+                    room: $ctrl.room,
                     customData: round.customData
                 })
                 .then((newRound) => {
                     $ctrl.rounds.unshift(newRound);
                     $mdDialog.hide();
-                    RoundModel.getByRoom($ctrl.roomInfo)
+                    RoundModel.getByRoom($ctrl.room)
                         .then(function(result) {
                             $ctrl.rounds = result;
                         });
@@ -67,7 +77,7 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
     };
 
     this.roundDelete = function(event) {
-        RoundModel.getByRoom($ctrl.roomInfo)
+        RoundModel.getByRoom($ctrl.room)
             .then(function(result) {
                 $ctrl.rounds = result;
             });
