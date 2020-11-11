@@ -46,9 +46,28 @@
                         <form layout="column">
                             <md-input-container>
                                 <label>User's ID Code</label>
-                                <input type="text" ng-model="user.id" required>
+                                <input type="text" ng-model="adminUser.id" required>
                             </md-input-container>
-                            <md-button ng-click="$ctrl.addUser(user, true);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
+                            <md-button ng-click="$ctrl.addUser(adminUser, true);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
+                        </form>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-title>
+                        <span class="md-headline">Remove User Permissions</span>
+                    </md-card-title>
+                    <md-card-content>
+                        <form layout="column">
+                            <md-input-container>
+                                <label>User's ID Code</label>
+                                <md-select ng-model="removeUser">
+                                    <md-option ng-repeat="userInfo in $ctrl.users" ng-value="userInfo" ng-if="userInfo != '*'">
+                                        {{ userInfo }}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-button ng-click="$ctrl.kickUser(removeUser);" value="Remove" class="md-raised md-primary" type="submit">Remove User</md-button>
                         </form>
                     </md-card-content>
                 </md-card>

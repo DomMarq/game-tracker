@@ -14,7 +14,7 @@ angular.module('components.room')
             parent: 'app',
             url: '/room/:id',
             params: {
-                id: '4xZV4yg6EE'
+                id: 'qMePxZ2vou'
             },
             component: 'room',
             resolve: {

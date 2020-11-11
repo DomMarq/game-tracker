@@ -105,6 +105,12 @@ function AuthService() {
         return obj.getACL()
             .getPublicReadAccess();
     };
+
+    this.removePublicAccess = function(obj) {
+        obj.setACL(obj.getACL()
+            .setPublicWriteAccess(false));
+        obj.save();
+    };
 }
 
 angular

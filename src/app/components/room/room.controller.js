@@ -19,6 +19,10 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
             });
         $ctrl.loaded = true;
         $ctrl.isAdmin = AuthService.isAdmin($ctrl.roomInfo);
+        if ($ctrl.isAdmin) $ctrl.users = Object.keys($ctrl.roomInfo
+            .getACL()
+            .permissionsById);
+        if ($ctrl.users) console.log($ctrl.users);
     };
 
     $ctrl.addUser = function(user, admin) {
@@ -29,16 +33,18 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
         console.log(groupACL);
         $ctrl.roomInfo.setACL(groupACL);
         $ctrl.roomInfo.save();
+        $mdDialog.hide();
     };
 
     $ctrl.kickUser = function(user) {
         // TODO: Add a check to make sure that [user] is not the admin
         var groupACL = $ctrl.roomInfo.getACL();
-        groupACL.setReadAccess(user.id, false);
-        groupACL.setWriteAccess(user.id, false);
+        groupACL.setReadAccess(user, false);
+        groupACL.setWriteAccess(user, false);
 
         $ctrl.roomInfo.setACL(groupACL);
         $ctrl.roomInfo.save();
+        $mdDialog.hide();
     };
 
     $ctrl.showPerms = function(ev) {
