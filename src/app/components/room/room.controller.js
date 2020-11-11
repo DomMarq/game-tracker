@@ -1,10 +1,11 @@
-function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
+function RoomController(TeamModel, RoundModel, AuthService, $location, $mdDialog) {
     const $ctrl = this;
     $ctrl.$onInit = function() {
         $ctrl.room = {
             name: "",
             type: "",
-            teams: {}
+            teams: {},
+            members: []
         };
         $ctrl.roomLoaded = false;
         TeamModel.getByRoom($ctrl.roomInfo)
@@ -57,13 +58,23 @@ function RoomController(TeamModel, RoundModel, AuthService, $mdDialog) {
             clickOutsideToClose: true,
             fullscreen: true
         });
+
     };
 
-}
+    this.showQR = function(ev) {
+        $mdDialog.show({
+            contentElement: '#qrDialog',
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application to prevent interaction outside of dialog
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true
+        });
+        $ctrl.url = $location.absUrl();
+    };
 
-RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService',
-    '$mdDialog'
-];
+RoomController.$inject = ['TeamModel', 'RoundModel', 'AuthService', '$location', '$mdDialog'];
 angular
     .module('components.room')
     .controller('RoomController', RoomController);

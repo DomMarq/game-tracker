@@ -2,12 +2,19 @@
 <!--View the information about a room - games, team records, etc.-->
 <md-progress-linear md-mode="query" ng-if="!$ctrl.loaded"></md-progress-linear>
 <div ng-if="$ctrl.loaded">
-    <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
-    <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
+    <div layout="row">
+        <div>
+            <h1>Room Name: {{ $ctrl.roomInfo.name }}</h1>
+            <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
+        </div>
+    </div>
     <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams" roomInfo="$ctrl.roomInfo"></rounds>
     <br>
     <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
-
+    <md-button ng-click="$ctrl.showQR($event)" class="md-raised md-primary">
+        <md-tooltip md-delay="100">Show QR Code</md-tooltip>
+        Show QR Code
+    </md-button>
     <md-button ng-if="$ctrl.isAdmin" ng-click="$ctrl.showPerms($event);" class="md-raised md-primary">Open Permissions</md-button>
 </div>
 
@@ -72,6 +79,12 @@
                     </md-card-content>
                 </md-card>
             </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="qrDialog">
+        <md-dialog layout-padding aria-label="Room QR Code">
+            <qrcode ng-if="$ctrl.showQR" data="{{$ctrl.url}}" size="500em"></qrcode>
         </md-dialog>
     </div>
 </div>

@@ -1,14 +1,15 @@
-class TeamModel {
-    constructor(Parse, RoomModel) {
+class MemberModel {
+    constructor(Parse, RoomModel, TeamModel) {
         this.Parse = Parse;
         this.RoomModel = RoomModel;
-        this.name = 'Team';
+        this.TeamModel = TeamModel;
+        this.name = 'Member';
         this.fields = [
             'name',
-            'users',
-            'wins',
-            'losses',
-            'room'
+            'room',
+            'team',
+            'isManager',
+            'user'
         ];
         this.data = {}; // hold singular result of queries
         this.collection = []; // hold array results of queries
@@ -22,10 +23,13 @@ class TeamModel {
             parseObject.room = new this.Parse.Object(this.RoomModel.name);
             this.Parse.defineAttributes(parseObject.room, this.RoomModel
                 .fields);
+            parseObject.team = new this.Parse.Object(this.TeamModel.name);
+            this.Parse.defineAttributes(parseObject.team, this.TeamModel.fields);
             return parseObject;
         } else { // Exposing Team Parse Object Attributes (getters and setters)
             this.Parse.defineAttributes(obj, this.fields);
             this.Parse.defineAttributes(obj.room, this.RoomModel.fields);
+            this.Parse.defineAttributes(obj.team, this.TeamModel.fields);
             return obj;
         }
     }
@@ -34,38 +38,22 @@ class TeamModel {
         return new this.Parse.Query(this.New())
             .get(id)
             .then(result => {
-                this.Parse.defineAttributes(result, this
-                    .fields);
+                this.Parse.defineAttributes(result, this.fields);
                 this.Parse.defineAttributes(result.room,
                     this.RoomModel.fields);
+                this.Parse.defineAttributes(result.team,
+                    this.TeamModel.fields);
                 this.data = result;
                 return Promise.resolve(result);
             })
             .catch(error => Promise.reject(error));
     }
 
-    getByNameAndRoom(name, room) {
+    // get team members by team
+    getByTeam(team) {
         return new this.Parse.Query(this.New())
-            .include('name')
-            .include('room')
-            .equalTo('room', room)
-            .equalTo('name', name)
-            .then(result => {
-                if (result.length > 1) result = result[0];
-                this.Parse.defineAttributes(result, this
-                    .fields);
-                this.Parse.defineAttributes(result.room,
-                    this.RoomModel.fields);
-                this.data = result;
-                return Promise.resolve(result);
-            })
-            .catch(error => Promise.reject(error));
-    }
-    // get team by room
-    getByRoom(room) {
-        return new this.Parse.Query(this.New())
-            .include('room')
-            .equalTo('room', room)
+            .include('team')
+            .equalTo('team', team)
             .descending('createdAt')
             .find()
             .then(results => {
@@ -74,6 +62,8 @@ class TeamModel {
                         .fields);
                     this.Parse.defineAttributes(result.room,
                         this.RoomModel.fields);
+                    this.Parse.defineAttributes(result.team,
+                        this.TeamModel.fields);
                 });
                 this.collection = results;
                 return Promise.resolve(results);
@@ -85,4 +75,4 @@ class TeamModel {
 
 angular
     .module('common')
-    .service('TeamModel', TeamModel);
+    .service('MemberModel', MemberModel);

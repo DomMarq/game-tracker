@@ -42,17 +42,60 @@
   height: 100%;
 }
 
-.team-attr {
-    text-align: center;
-}
+.teams-outer {
+    display: flex;
+    justify-content: center;
 
-.team-card {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    background-color: #424242;
 }
 
 .teams-header {
-    background-color: rgba(172, 172, 172, 0.5);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    background-color: #6D6D6D;
+}
+
+.teams-title {
+    display: flex;
+    flex-flow: row;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.team-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.5em;
+    background-color: #A4A4A4;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.team-attr {
+    display: flex;
+    flex-flow: row;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: black;
 }
 
 .round-attr {
@@ -72,6 +115,10 @@
 .roomSelect {
     /* Remove top margin so the dropdown doesn't look so weird */
     margin-top: 0;
+}
+
+.add-team {
+    align-self: center;
 }
 
 .add-round {
