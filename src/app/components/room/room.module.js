@@ -1,4 +1,5 @@
 angular.module('components.room', [
     'ui.router',
-    'components.teams'
+    'components.teams',
+    'monospaced.qrcode'
 ]);

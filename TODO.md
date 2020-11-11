@@ -22,18 +22,19 @@
     - [x] creation
     - [ ] stats
 - [ ] full team functionality
-    - [ ] team creation
+    - [x] team creation
     - [ ] editing
     - [ ] deletion
 - [ ] Add message if login failed
 
 ## Dominic Stories
 - [ ] QR Code generator  (user story)
-- [ ] Whitelist room access (private rooms)
-    - [ ] kick user
-    - [ ] Admin permissions
-        - [ ] transfer permissions / handle admin leaving
-- [x] Add custom data columns / stats
+
+- [x] Whitelist room access (private rooms)
+    - [x] kick user
+    - [x] Admin permissions
+        - [x] transfer permissions / handle admin leaving
+- [ ] Add custom data columns / stats
 
 
 ## Connor Stories

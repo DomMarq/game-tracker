@@ -30,6 +30,7 @@ function NewRoomController(RoomModel, $stateProvider, $state, AuthService) {
                     console.log(newRoom);
                     if (room.private && $ctrl.isLoggedIn) AuthService
                         .setAdmin(newRoom);
+                    AuthService.removePublicAccess(newRoom);
                     $state.go('room', {
                         id: newRoom.id
                     });

@@ -29,13 +29,14 @@ var argv = yargs.argv,
     productionServerURL = '',
     templates = ['src/app/**/*.html'],
     modules = ['@uirouter/angularjs/release/angular-ui-router.js',
-    '@uirouter/visualizer/bundles/visualizer.min.js',
-    'parse/dist/parse.min.js',
-    'angular-parse/angular-parse.js',
-    '@fintechstudios/angularjs-mdc/dist/angularjs-mdc.min.js',
-    'angular-material-expansion-panel/dist/md-expansion-panel.js',
-    'vue/dist/vue.js', 'ngVue/build/index.js'
-  ]; // these are 3rd party libraries in the node_modules folder NOT *.module.js files
+        '@uirouter/visualizer/bundles/visualizer.min.js',
+        'parse/dist/parse.min.js',
+        'angular-parse/angular-parse.js',
+        '@fintechstudios/angularjs-mdc/dist/angularjs-mdc.min.js',
+        'angular-material-expansion-panel/dist/md-expansion-panel.js',
+        'vue/dist/vue.js', 'ngVue/build/index.js',
+        'angular-qrcode/angular-qrcode.js', 'qrcode-generator/qrcode.js'
+    ]; // these are 3rd party libraries in the node_modules folder NOT *.module.js files
 
 /* utility function to generate Unix DateTime Stamp */
 function getDate() {
@@ -78,7 +79,10 @@ gulp.task('styles', () => {
     return gulp.src('src/index.html', {
             base: './'
         })
-        .pipe(replace(/<link id=\"bundlecss\"[\s\S]*?>[\s\S]*?/gi, '<link id="bundlecss" rel="stylesheet" href="css/' + filename + '">')) //so find the script tag with an id of bundle, and replace its src.
+        .pipe(replace(/<link id=\"bundlecss\"[\s\S]*?>[\s\S]*?/gi,
+            '<link id="bundlecss" rel="stylesheet" href="css/' +
+            filename + '">'
+        )) //so find the script tag with an id of bundle, and replace its src.
         .pipe(gulp.dest('./')); //Write the file back to the same spot.
 });
 
@@ -92,7 +96,7 @@ gulp.task('templates', () => {
         .pipe(templateCache({
             root: 'app',
             standalone: true,
-            transformUrl: function (url) {
+            transformUrl: function(url) {
                 return url.replace(path.dirname(url), '.');
             }
         }))
@@ -130,8 +134,12 @@ gulp.task('modules', gulp.series('templates', () => {
         .src(root + '/index.html', {
             base: './'
         })
-        .pipe(replace(/<script id=\"bundle2\"[\s\S]*?>[\s\S]*?<\/script>/gi, '<script id="bundle2" src="js/' + filename + '"></script>'))
-        .pipe(gulp.dest('.')); //Write the file back to the same spot.
+        .pipe(replace(
+            /<script id=\"bundle2\"[\s\S]*?>[\s\S]*?<\/script>/gi,
+            '<script id="bundle2" src="js/' + filename +
+            '"></script>'))
+        .pipe(gulp.dest(
+            '.')); //Write the file back to the same spot.
 
 }));
 
@@ -150,7 +158,9 @@ gulp.task('scripts', gulp.series('modules', () => {
         .pipe(gulpif(!argv._.length, sourcemaps.init({
             loadMaps: true
         })))
-        .pipe(wrap('(function(angular){\n\'use strict\';\n<%= contents %>})(window.angular);'))
+        .pipe(wrap(
+            '(function(angular){\n\'use strict\';\n<%= contents %>})(window.angular);'
+        ))
         .pipe(concat(filename))
         .pipe(ngAnnotate()) // this adds
         .pipe(gulpif(argv.deploy, uglify()))
@@ -163,8 +173,12 @@ gulp.task('scripts', gulp.series('modules', () => {
         .src(root + '/index.html', {
             base: './'
         })
-        .pipe(replace(/<script id=\"bundle\"[\s\S]*?>[\s\S]*?<\/script>/gi, '<script id="bundle" src="js/' + filename + '"></script>'))
-        .pipe(gulp.dest('.')); //Write the file back to the same spot.
+        .pipe(replace(
+            /<script id=\"bundle\"[\s\S]*?>[\s\S]*?<\/script>/gi,
+            '<script id="bundle" src="js/' + filename +
+            '"></script>'))
+        .pipe(gulp.dest(
+            '.')); //Write the file back to the same spot.
 }));
 
 // copy html files
@@ -205,10 +219,12 @@ gulp.task('connect-app', () => {
 //     });
 // });
 
-gulp.task('default', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', 'connect-app', (done) => {
-    done();
-}));
+gulp.task('default', gulp.series('clean', 'scripts', 'styles', 'copy-html',
+    'copy-img', 'copy-fonts', 'connect-app', (done) => {
+        done();
+    }));
 
-gulp.task('production', gulp.series('clean', 'scripts', 'styles', 'copy-html', 'copy-img', 'copy-fonts', (done) => {
-    done();
-}));
+gulp.task('production', gulp.series('clean', 'scripts', 'styles', 'copy-html',
+    'copy-img', 'copy-fonts', (done) => {
+        done();
+    }));
