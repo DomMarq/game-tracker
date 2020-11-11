@@ -24,15 +24,15 @@
 - [ ] full team functionality
     - [x] team creation
     - [ ] editing
-    - [x] deletion
-
+    - [ ] deletion
+- [ ] Add message if login failed
 
 ## Dominic Stories
-- [x] QR Code generator  (user story)
-- [ ] Whitelist room access (private rooms)
-    - [ ] kick user
-    - [ ] Admin permissions
-        - [ ] transfer permissions / handle admin leaving
+- [ ] QR Code generator  (user story)
+- [x] Whitelist room access (private rooms)
+    - [x] kick user
+    - [x] Admin permissions
+        - [x] transfer permissions / handle admin leaving
 - [ ] Add custom data columns / stats
 
 

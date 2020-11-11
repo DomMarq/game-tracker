@@ -65,6 +65,52 @@ function AuthService() {
         return Parse.User.current();
     };
 
+    this.isReadable = function(obj) {
+        console.log(obj.getACL());
+        return obj.getACL()
+            .getReadAccess(Parse.User.current());
+    };
+
+    this.isAdmin = function(obj) {
+        return obj.getACL()
+            .getWriteAccess(Parse.User.current());
+    }
+
+    this.setAdmin = function(obj) {
+        obj.setACL(new Parse.ACL(
+            Parse.User.current()));
+        obj.save();
+    };
+
+    this._getUserByEmail = function(email) {
+        new Parse.Query(new Parse.User())
+            // .include('email')
+            .equalTo('email', email)
+            .find()
+            .then(result => {
+                return Promise.resolve(result);
+            })
+            .catch(error => Promise.reject(error));
+    };
+
+    this.addUserPerms = function(obj, email) {
+        this._getUserByEmail(email)
+            .then(result => {
+                var acl = obj.getACL()
+                    .setReadAccess(result);
+            });
+    };
+
+    this.isPublic = function(obj) {
+        return obj.getACL()
+            .getPublicReadAccess();
+    };
+
+    this.removePublicAccess = function(obj) {
+        obj.setACL(obj.getACL()
+            .setPublicWriteAccess(false));
+        obj.save();
+    };
 }
 
 angular

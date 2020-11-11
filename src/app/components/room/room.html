@@ -15,7 +15,70 @@
         <md-tooltip md-delay="100">Show QR Code</md-tooltip>
         Show QR Code
     </md-button>
-    <br>
+    <md-button ng-if="$ctrl.isAdmin" ng-click="$ctrl.showPerms($event);" class="md-raised md-primary">Open Permissions</md-button>
+</div>
+
+
+<div ng-if="$ctrl.isAdmin" style="visibility: hidden">
+    <div class="md-dialog-container" id="permDialog">
+        <md-dialog layout-padding aria-label="Edit access permissions of the room">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">
+                    <h3>
+                        <span>Edit access permissions of the room</span>
+                    </h3>
+                </div>
+            </md-toolbar>
+            <div layout="row">
+                <md-card>
+                    <md-card-title>
+                        <span class="md-headline">Add user to room</span>
+                    </md-card-title>
+                    <md-card-content>
+                        <form layout="column">
+                            <md-input-container>
+                                <label>User's ID Code</label>
+                                <input type="text" ng-model="user.id" required>
+                            </md-input-container>
+                            <md-button ng-click="$ctrl.addUser(user, false);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
+                        </form>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-title>
+                        <span class="md-headline">Add user as Admin</span>
+                    </md-card-title>
+                    <md-card-content>
+                        <form layout="column">
+                            <md-input-container>
+                                <label>User's ID Code</label>
+                                <input type="text" ng-model="adminUser.id" required>
+                            </md-input-container>
+                            <md-button ng-click="$ctrl.addUser(adminUser, true);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
+                        </form>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-title>
+                        <span class="md-headline">Remove User Permissions</span>
+                    </md-card-title>
+                    <md-card-content>
+                        <form layout="column">
+                            <md-input-container>
+                                <label>User's ID Code</label>
+                                <md-select ng-model="removeUser">
+                                    <md-option ng-repeat="userInfo in $ctrl.users" ng-value="userInfo" ng-if="userInfo != '*'">
+                                        {{ userInfo }}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-button ng-click="$ctrl.kickUser(removeUser);" value="Remove" class="md-raised md-primary" type="submit">Remove User</md-button>
+                        </form>
+                    </md-card-content>
+                </md-card>
+            </div>
 </div>
 
 <div style="visibility: hidden">
