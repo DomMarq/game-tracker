@@ -33,13 +33,18 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
                 room: $ctrl.roomInfo
             })
             .then((newTeam) => {
-                $ctrl.teams.unshift(newTeam);
                 $mdDialog.hide();
                 console.log(newTeam);
-                TeamModel.getByRoom($ctrl.roomInfo)
-                    .then(function(result) {
-                        $ctrl.teams = result;
-                    })
+                $ctrl.roomInfo.teams.push(newTeam);
+                $ctrl.roomInfo.save({
+                    teams: $ctrl.roomInfo.teams
+                })
+                .then(function(response) {
+                    TeamModel.getByRoom($ctrl.roomInfo)
+                        .then(function(result) {
+                            $ctrl.roomInfo.teams = result;
+                        })
+                })
             })
         }
     }
@@ -47,7 +52,7 @@ function TeamsController($mdDialog, TeamModel, RoomModel) {
     this.teamDelete = function(event) {
         TeamModel.getByRoom($ctrl.roomInfo)
             .then(function(result) {
-                $ctrl.teams = result;
+                $ctrl.roomInfo.teams = result;
             });
     };
 }

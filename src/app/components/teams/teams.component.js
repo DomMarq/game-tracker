@@ -2,7 +2,6 @@ const teams = {
     templateUrl: './teams.html',
     controller: 'TeamsController',
     bindings: {
-        teams: '<',
         roomInfo: '<'
     }
 };

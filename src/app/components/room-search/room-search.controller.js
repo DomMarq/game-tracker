@@ -50,7 +50,15 @@ function RoomSearchController(AuthService, RoomModel, MemberModel, $stateProvide
                         })
                         .catch(function(error) {
                             console.log(error);
+                            $ctrl.isSubmitted = false;
                         })
+                })
+                .catch(function(error) {
+                    console.log(error);
+                    $ctrl.roomSearchJoinMessage =
+                        "There was an issue. Please try again.";
+                    $ctrl.roomSearchFormSubmission = true;
+                    $ctrl.isSubmitted = false;
                 })
         }
     }
