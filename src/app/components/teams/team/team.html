@@ -15,7 +15,7 @@
         Losses: {{ $ctrl.team.losses }}
     </div>
     <md-divider></md-divider>
-    <members ng-if="$ctrl.membersLoaded" members="$ctrl.members"></members>
+    <members ng-if="$ctrl.membersLoaded" members="$ctrl.members" team="$ctrl.team" roomInfo="$ctrl.roomInfo"></members>
     <md-divider></md-divider>
     <md-button ng-if="!$ctrl.isDeleted" ng-click="$ctrl.deleteTeam();" class="md-icon-button md-warn team-attr delete-team" aria-label="Delete Team">
         <md-icon>delete</md-icon>

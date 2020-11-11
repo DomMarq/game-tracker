@@ -5,7 +5,7 @@ class TeamModel {
         this.name = 'Team';
         this.fields = [
             'name',
-            'users',
+            'members',
             'wins',
             'losses',
             'room'

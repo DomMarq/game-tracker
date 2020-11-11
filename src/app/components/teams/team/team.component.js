@@ -3,7 +3,8 @@ const team = {
     controller: 'TeamController',
     bindings: {
         team: '<',
-        teamDelete: '&'
+        teamDelete: '&',
+        roomInfo: '<'
     }
 };
 

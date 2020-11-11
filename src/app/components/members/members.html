@@ -6,7 +6,7 @@
     <md-card layout="column" layout-align="center" class="teams-header">
         <member ng-repeat="member in $ctrl.members" member="member" member-delete=$ctrl.memberDelete($event)></member>
         <md-divider></md-divider>
-        <md-button ng-click="$ctrl.showJoinTeam($event)" class="md-icon-button md-primary join-team" aria-label="Join Team">
+        <md-button ng-click="$ctrl.switchTeam($event)" class="md-icon-button md-primary switch-team" aria-label="Switch Team">
             <md-icon>add</md-icon>
         </md-button>
     </md-card>
