@@ -1,9 +1,7 @@
 function RoundsController($mdDialog, RoundModel, RoomModel) {
     var $ctrl = this;
-    console.log($ctrl.roomInfo);
 
     $ctrl.$onInit = function() {
-        console.log(RoomModel.data);
         $ctrl.roomInfo = RoomModel.data;
     }
 
@@ -28,7 +26,7 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
         } else if (round.winnerScore < round.loserScore || round.loser ===
             round.winner) {
             $ctrl.creationMessage =
-                "There was an issue. Please try again.";
+                "Invalid input. Please try again.";
             $ctrl.formSubmission = true;
         } else {
             $ctrl.isSubmitted = true;
