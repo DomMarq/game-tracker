@@ -10,7 +10,7 @@ function RoomSearchController(AuthService, RoomModel, MemberModel, $stateProvide
     }
 
     // Create a room object with user info and send the information to the backend
-    this.joinRoom = function(code) {
+    this.joinRoom = function(code, nickname) {
         if (code == undefined) {
             $ctrl.roomSearchJoinMessage =
                 "There was an issue. Please try again.";
@@ -29,7 +29,7 @@ function RoomSearchController(AuthService, RoomModel, MemberModel, $stateProvide
                             } else {
                                 var newMember = MemberModel.New();
                                 newMember.save({
-                                    name: $ctrl.user.name,
+                                    name: nickname,
                                     room: room,
                                     team: null,
                                     isManager: false,

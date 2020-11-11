@@ -15,7 +15,7 @@ function NewRoomController(AuthService, RoomModel, MemberModel, $stateProvider, 
             $ctrl.newRoomCreationMessage =
                 "There was an issue. Please try again.";
             $ctrl.newRoomFormSubmission = true;
-        } else if (!room.name || !room.type || !room.teams) {
+        } else if (!room.name || !room.type) {
             $ctrl.newRoomCreationMessage =
                 "There was an issue. Please try again.";
             $ctrl.newRoomFormSubmission = true;
@@ -34,7 +34,7 @@ function NewRoomController(AuthService, RoomModel, MemberModel, $stateProvider, 
             .then(function(newRoom) {
                 var manager = MemberModel.New();
                 manager.save({
-                    name: $ctrl.user.name,
+                    name: $ctrl.user.username,
                     room: newRoom,
                     team: null,
                     isManager: true,

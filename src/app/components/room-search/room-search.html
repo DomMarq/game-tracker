@@ -9,10 +9,12 @@
                     <label>Room ID</label>
                     <input type="text" ng-model="code" required />
                 </md-input-container>
-                <!-- TODO: add ability to add teammate names and such from creation page -->
-                <!-- TODO: Add check to keep user from accidentally closing page without submitting -->
+                <md-input-container class="new-room-input">
+                    <label>Nickname</label>
+                    <input type="text" ng-model="nickname" required />
+                </md-input-container>
                 <div layout="row">
-                    <md-button ng-click="$ctrl.joinRoom(code);" value="Join" class="md-raised md-primary">Join</md-button>
+                    <md-button ng-click="$ctrl.joinRoom(code, nickname);" value="Join" class="md-raised md-primary">Join</md-button>
                     <md-progress-circular ng-if="$ctrl.isSubmitted" class="md-hue-2" md-diameter="20px"></md-progress-circular>
                 </div>
             </form>
