@@ -29,6 +29,7 @@
 
 ## Dominic Stories
 - [ ] QR Code generator  (user story)
+
 - [x] Whitelist room access (private rooms)
     - [x] kick user
     - [x] Admin permissions

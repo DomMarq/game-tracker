@@ -4,7 +4,7 @@ const rounds = {
     bindings: {
         rounds: '<',
         teams: '<',
-        roomInfo: '<'
+        room: '<'
     }
 };
 

@@ -8,7 +8,7 @@
             <h1>Game Type: {{ $ctrl.roomInfo.gameType }}</h1>
         </div>
     </div>
-    <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams" roomInfo="$ctrl.roomInfo"></rounds>
+    <rounds ng-if="$ctrl.roundsLoaded" rounds="$ctrl.rounds" teams="$ctrl.teams" room="$ctrl.roomInfo"></rounds>
     <br>
     <teams ngIf="$ctrl.teamsLoaded" teams="$ctrl.teams"></teams>
     <md-button ng-click="$ctrl.showQR($event)" class="md-raised md-primary">
@@ -16,6 +16,7 @@
         Show QR Code
     </md-button>
     <md-button ng-if="$ctrl.isAdmin" ng-click="$ctrl.showPerms($event);" class="md-raised md-primary">Open Permissions</md-button>
+    <md-button ng-if="$ctrl.isAdmin" ng-click="$ctrl.showCustomData($event);" class="md-raised md-primary">Add Custom Data Column</md-button>
 </div>
 
 
@@ -85,6 +86,40 @@
     <div class="md-dialog-container" id="qrDialog">
         <md-dialog layout-padding aria-label="Room QR Code">
             <qrcode ng-if="$ctrl.showQR" data="{{$ctrl.url}}" size="500em"></qrcode>
+        </md-dialog>
+    </div>
+</div>
+
+<div ng-if="$ctrl.isAdmin" style="visibility: hidden">
+    <div class="md-dialog-container" id="customDataDialog">
+        <md-dialog layout-padding aria-label="Edit access permissions of the room">
+            <md-toolbar md-scroll-shrink>
+                <div class="md-toolbar-tools">
+                    <h3>
+                        <span>Edit access permissions of the room</span>
+                    </h3>
+                </div>
+            </md-toolbar>
+            <!-- <div layout="row"> -->
+                <md-card>
+                    <md-card-title>
+                        <span class="md-headline">Add user to room</span>
+                    </md-card-title>
+                    <md-card-content>
+                        <form layout="column">
+                            <md-input-container>
+                                <label>Data Label</label>
+                                <input type="text" ng-model="data.key" required>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Default Value</label>
+                                <input type="number" ng-model="data.value" required>
+                            </md-input-container>
+                            <md-button ng-click="$ctrl.addCustomData(data);" value="Save" class="md-raised md-primary" type="submit">Save</md-button>
+                        </form>
+                    </md-card-content>
+                </md-card>
+            <!-- </div> -->
         </md-dialog>
     </div>
 </div>

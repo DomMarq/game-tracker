@@ -62,9 +62,23 @@ function RoomController(TeamModel, RoundModel, AuthService, $location,
 
     };
 
+
+    $ctrl.showCustomData = function(ev) {
+        $mdDialog.show({
+            contentElement: '#customDataDialog',
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application to prevent interaction outside of dialog
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true
+        });
+    };
+
     this.showQR = function(ev) {
         $mdDialog.show({
             contentElement: '#qrDialog',
+
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application to prevent interaction outside of dialog
             parent: angular.element(document.body),
@@ -73,6 +87,19 @@ function RoomController(TeamModel, RoundModel, AuthService, $location,
             fullscreen: true
         });
         $ctrl.url = $location.absUrl();
+    };
+
+    $ctrl.addCustomData = function(data) {
+        $ctrl.roomInfo.customData[data.key] = data.value;
+        $ctrl.roomInfo.save();
+        console.log($ctrl.rounds);
+        for (var i = 0; i < $ctrl.rounds.length; i++) {
+            // var round = $ctrl.rounds[i];
+            $ctrl.rounds[i].customData[data.key] = data
+                .value;
+            $ctrl.rounds[i].save();
+        };
+        $mdDialog.cancel();
     };
 }
 
