@@ -38,6 +38,7 @@ function AuthService() {
 
         user.signUp()
             .then((user) => {
+                location.reload();
                 console.log('User signed up', user);
             })
             .catch(error => {

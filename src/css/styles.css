@@ -13,14 +13,22 @@
     margin: 0;
 }
 
+.navbar .lower-navbar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    margin: 0;
+    background: forestgreen;
+}
+
 .navbar .buttons {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 
-    list-style: none;
     margin: 0;
-    background: forestgreen;
+    list-style: none;
 }
 
 .navbar .buttons a {
@@ -35,11 +43,27 @@
     background: rgb(34,100,20);
 }
 
+.navbar .nav-username {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
 .vertical-divider {
   border-top-width: 0;
   border-right-width: 1px;
   border-right-style: solid;
   height: 100%;
+}
+
+.filler-text {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: black;
 }
 
 .room-header {
