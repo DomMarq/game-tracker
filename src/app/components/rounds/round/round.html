@@ -17,7 +17,7 @@
     </div>
     <md-divider></md-divider>
 
-    <div flex="$ctrl.customFlexSize" layout="row">
+    <div flex="$ctrl.customFlexSize" layout="row" ng-if="$ctrl.dataKeys.length">
         <div ng-repeat="data in $ctrl.round.customData" layout="row" layout-align="stretch" flex="$ctrl.innerCustomFlexSize">
             <div class="round-attr" flex="100">
                 {{ data }}

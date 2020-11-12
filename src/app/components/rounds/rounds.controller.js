@@ -48,10 +48,14 @@ function RoundsController($mdDialog, RoundModel, RoomModel) {
             // console.log(roundJson);
 
             var newRound = RoundModel.New();
-            for (let [key, value] of Object.entries(round.customData)) {
-                if (!value) {
-                    round.customData = '-';
+            if (round.customData) {
+                for (let [key, value] of Object.entries(round.customData)) {
+                    if (!value) {
+                        round.customData = '-';
+                    }
                 }
+            } else {
+                round.customData = {};
             }
             newRound.save({
                     winner: round.winner,
