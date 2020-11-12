@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5 (2020-11-12)
+* Implemented the ability to add and delete rounds of games
+* Added ability to open a QR code which provides the URL to the room
+* Added whitelist controls for admins
+* Added ability to implement custom data columns for rounds
+
 ## 0.4 (2020-10-14)
 
 ### Features
