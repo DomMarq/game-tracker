@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5 (2020-11-14)
+* Added a visual indicator for the user's login status
+* Added the ability to add and remove teams, as well as edit team names
+* A user creating or joining a room for the first time will now be added as a member of that room in the spectator card
+* Added the ability to join rooms by entering the room's unique ID code. User can also select a custom nickname upon joining
+
 ## 0.4 (2020-10-14)
 
 ### Features
