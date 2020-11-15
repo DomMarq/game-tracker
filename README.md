@@ -10,3 +10,10 @@ and manage tournaments!
 
 NOTE: The app initially loads with a blank screen. To fix that, just add the /#!/
 route to navigate to the app.
+
+
+## Install & Run
+'''
+npm i
+gulp
+'''
